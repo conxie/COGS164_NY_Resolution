@@ -1754,15 +1754,17 @@ display: none;
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVJMnh2WVdRZ2FXNGdiR2xpY21GeWFXVnpJRnh1YVc1emRHRnNiQzV3WVdOcllXZGxjeWhjSW5ScFpIbDJaWEp6WlZ3aUtWeHViR2xpY21GeWVTaDBhV1I1ZG1WeWMyVXBYRzVzYVdKeVlYSjVLR2hoZG1WdUtWeHViR2xpY21GeWVTaHlaV0ZrY2lsY2JteHBZbkpoY25rb1pIQnNlWElwWEc1c2FXSnlZWEo1S0hkeWFYUmxlR3dwWEc1c2FXSnlZWEo1S0dobGNtVXBYRzVjYm1CZ1lDSjkgLS0+XG5cbmBgYHJcbiNsb2FkIGluIGxpYnJhcmllcyBcbmluc3RhbGwucGFja2FnZXMoXCJ0aWR5dmVyc2VcIilcbmxpYnJhcnkodGlkeXZlcnNlKVxubGlicmFyeShoYXZlbilcbmxpYnJhcnkocmVhZHIpXG5saWJyYXJ5KGRwbHlyKVxubGlicmFyeSh3cml0ZXhsKVxubGlicmFyeShoZXJlKVxuXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2xvYWQgaW4gbGlicmFyaWVzIFxuaW5zdGFsbC5wYWNrYWdlcyhcInRpZHl2ZXJzZVwiKVxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGhhdmVuKVxubGlicmFyeShyZWFkcilcbmxpYnJhcnkoZHBseXIpXG5saWJyYXJ5KHdyaXRleGwpXG5saWJyYXJ5KGhlcmUpXG5cbmBgYCJ9 -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVJMnh2WVdRZ2FXNGdiR2xpY21GeWFXVnpJRnh1YVc1emRHRnNiQzV3WVdOcllXZGxjeWhjSW5ScFpIbDJaWEp6WlZ3aUtWeHViR2xpY21GeWVTaDBhV1I1ZG1WeWMyVXBYRzVzYVdKeVlYSjVLR2hoZG1WdUtWeHViR2xpY21GeWVTaHlaV0ZrY2lsY2JteHBZbkpoY25rb1pIQnNlWElwWEc1cGJuTjBZV3hzTG5CaFkydGhaMlZ6S0Z3aWQzSnBkR1Y0YkZ3aUtWeHViR2xpY21GeWVTaDNjbWwwWlhoc0tWeHVhVzV6ZEdGc2JDNXdZV05yWVdkbGN5aGNJbWhsY21WY0lpbGNibXhwWW5KaGNua29hR1Z5WlNsY2JseHVZR0JnSW4wPSAtLT5cblxuYGBgclxuI2xvYWQgaW4gbGlicmFyaWVzIFxuaW5zdGFsbC5wYWNrYWdlcyhcInRpZHl2ZXJzZVwiKVxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGhhdmVuKVxubGlicmFyeShyZWFkcilcbmxpYnJhcnkoZHBseXIpXG5pbnN0YWxsLnBhY2thZ2VzKFwid3JpdGV4bFwiKVxubGlicmFyeSh3cml0ZXhsKVxuaW5zdGFsbC5wYWNrYWdlcyhcImhlcmVcIilcbmxpYnJhcnkoaGVyZSlcblxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2xvYWQgaW4gbGlicmFyaWVzIFxuaW5zdGFsbC5wYWNrYWdlcyhcInRpZHl2ZXJzZVwiKVxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGhhdmVuKVxubGlicmFyeShyZWFkcilcbmxpYnJhcnkoZHBseXIpXG5pbnN0YWxsLnBhY2thZ2VzKFwid3JpdGV4bFwiKVxubGlicmFyeSh3cml0ZXhsKVxuaW5zdGFsbC5wYWNrYWdlcyhcImhlcmVcIilcbmxpYnJhcnkoaGVyZSlcblxuYGBgIn0= -->
 <pre class="r"><code>#load in libraries 
 install.packages(&quot;tidyverse&quot;)
 library(tidyverse)
 library(haven)
 library(readr)
 library(dplyr)
+install.packages(&quot;writexl&quot;)
 library(writexl)
+install.packages(&quot;here&quot;)
 library(here)
 </code></pre>
 <!-- rnb-source-end -->
@@ -1771,319 +1773,55 @@ library(here)
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVJMnh2WVdRZ2FXNGdiR2xpY21GeWFXVnpJRnh1YVc1emRHRnNiQzV3WVdOcllXZGxjeWhjSW5ScFpIbDJaWEp6WlZ3aUtWeHVYRzVnWUdBaWZRPT0gLS0+XG5cbmBgYHJcbiNsb2FkIGluIGxpYnJhcmllcyBcbmluc3RhbGwucGFja2FnZXMoXCJ0aWR5dmVyc2VcIilcblxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2xvYWQgaW4gbGlicmFyaWVzIFxuaW5zdGFsbC5wYWNrYWdlcyhcInRpZHl2ZXJzZVwiKVxuXG5gYGAifQ== -->
-<pre class="r"><code>#load in libraries 
-install.packages(&quot;tidyverse&quot;)
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR2xpY21GeWVTaG9aWEpsS1Z4dVhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxubGlicmFyeShoZXJlKVxuXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShoZXJlKVxuXG5gYGAifQ== -->
+<pre class="r"><code>library(here)
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV0FSTklORzogUnRvb2xzIGlzIHJlcXVpcmVkIHRvIGJ1aWxkIFIgcGFja2FnZXMgYnV0IGlzIG5vdCBjdXJyZW50bHkgaW5zdGFsbGVkLiBQbGVhc2UgZG93bmxvYWQgYW5kIGluc3RhbGwgdGhlIGFwcHJvcHJpYXRlIHZlcnNpb24gb2YgUnRvb2xzIGJlZm9yZSBwcm9jZWVkaW5nOlxuXG5odHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvUnRvb2xzL1xuSW5zdGFsbGluZyBwYWNrYWdlIGludG8g4oCYQzovVXNlcnMvY29jb24vQXBwRGF0YS9Mb2NhbC9SL3dpbi1saWJyYXJ5LzQuNOKAmVxuKGFzIOKAmGxpYuKAmSBpcyB1bnNwZWNpZmllZClcbmFsc28gaW5zdGFsbGluZyB0aGUgZGVwZW5kZW5jaWVzIOKAmGNvbG9yc3BhY2XigJksIOKAmHN5c+KAmSwg4oCYcHPigJksIOKAmGZhcnZlcuKAmSwg4oCYbGFiZWxpbmfigJksIOKAmG11bnNlbGzigJksIOKAmFJDb2xvckJyZXdlcuKAmSwg4oCYdmlyaWRpc0xpdGXigJksIOKAmHJlbWF0Y2jigJksIOKAmGFza3Bhc3PigJksIOKAmHByb2Nlc3N44oCZLCDigJhibG9i4oCZLCDigJhEQknigJksIOKAmGRhdGEudGFibGXigJksIOKAmGd0YWJsZeKAmSwg4oCYaXNvYmFuZOKAmSwg4oCYc2NhbGVz4oCZLCDigJhnYXJnbGXigJksIOKAmHV1aWTigJksIOKAmGNlbGxyYW5nZXLigJksIOKAmGN1cmzigJksIOKAmGlkc+KAmSwg4oCYcmVtYXRjaDLigJksIOKAmG9wZW5zc2zigJksIOKAmHRpbWVjaGFuZ2XigJksIOKAmHN5c3RlbWZvbnRz4oCZLCDigJh0ZXh0c2hhcGluZ+KAmSwg4oCYY2FsbHLigJksIOKAmHNlbGVjdHLigJksIOKAmGNvbmZsaWN0ZWTigJksIOKAmGRicGx5cuKAmSwg4oCYZHRwbHly4oCZLCDigJhnZ3Bsb3Qy4oCZLCDigJhnb29nbGVkcml2ZeKAmSwg4oCYZ29vZ2xlc2hlZXRzNOKAmSwg4oCYaHR0cuKAmSwg4oCYbHVicmlkYXRl4oCZLCDigJhtb2RlbHLigJksIOKAmHJhZ2figJksIOKAmHJlYWR4bOKAmSwg4oCYcmVwcmV44oCZLCDigJhyc3R1ZGlvYXBp4oCZLCDigJhydmVzdOKAmSwg4oCYeG1sMuKAmVxuIn0= -->
-<pre><code>WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
-
-https://cran.rstudio.com/bin/windows/Rtools/
-Installing package into ‘C:/Users/cocon/AppData/Local/R/win-library/4.4’
-(as ‘lib’ is unspecified)
-also installing the dependencies ‘colorspace’, ‘sys’, ‘ps’, ‘farver’, ‘labeling’, ‘munsell’, ‘RColorBrewer’, ‘viridisLite’, ‘rematch’, ‘askpass’, ‘processx’, ‘blob’, ‘DBI’, ‘data.table’, ‘gtable’, ‘isoband’, ‘scales’, ‘gargle’, ‘uuid’, ‘cellranger’, ‘curl’, ‘ids’, ‘rematch2’, ‘openssl’, ‘timechange’, ‘systemfonts’, ‘textshaping’, ‘callr’, ‘selectr’, ‘conflicted’, ‘dbplyr’, ‘dtplyr’, ‘ggplot2’, ‘googledrive’, ‘googlesheets4’, ‘httr’, ‘lubridate’, ‘modelr’, ‘ragg’, ‘readxl’, ‘reprex’, ‘rstudioapi’, ‘rvest’, ‘xml2’</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG4gIFRoZXJlIGFyZSBiaW5hcnkgdmVyc2lvbnMgYXZhaWxhYmxlIGJ1dCB0aGUgc291cmNlIHZlcnNpb25zIGFyZSBsYXRlcjpcbiJ9 -->
-<pre><code>
-  There are binary versions available but the source versions are later:</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1mcmFtZS1iZWdpbiBleUp0WlhSaFpHRjBZU0k2ZXlKamJHRnpjMlZ6SWpwYkltUmhkR0V1Wm5KaGJXVWlYU3dpYm5KdmR5STZNaXdpYm1OdmJDSTZNeXdpYzNWdGJXRnllU0k2VzExOUxDSnlaR1lpT2lKSU5ITkpRVUZCUVVGQlFVRkNiVlpSV0ZWMlJVMUNSR05UT1hCTFF6UnlhVGQ2UW1OVU5VUjZXR1ozUW05dVFuWnJjV0o0UTA5VFUydDJWRGdyVUU5dU1qVnhSa2RvT1VOYWFXTjZkVFYwTldWMGFtUk9jbk5IUVVSblZVSlJUbVZKYjFSNU5XWnVlRnBuZFVGQ1RVRkxRM0ZwYml0NFRrWXhOMDFUTkVKSlVGTjNPV3hMTjJGcGNHVktUMkpOVkRaMkswbGxlVmxYYVZKa1JFMXBiVzVCWmxBMFRVczFNRGcyU21waE9FVlNWMjVZUlhsbVJrVldMMVJGYjI1aGIzSndNMVZtV0RWVkwwUk5Za3N3V0dsWVpHRjVSQzk0UkV4eWNsRmpSekpLUTJoVWIwZHRlU3RwY2tsNGEwbGlUSEExVTJwR1Z6aENkVmRLTUhsNU5XdG1jSFpzYjFsc1RtTldWMXBsYUZsNWIzSmxiVU5FUldKdVdTOXFaemxwYlc1c1FrZGpjRFZ6ZEUxUUsyUjZOelpVZG1GTFFYUk9jMkpTZDBkV1ZtNWlZVlYxWkdWMmVXUTBaMkp1VFhOWloyaEhSR1pUUkRWSFRsbDJVMnBLUlhWcWRrTldiUzlxVDJObVowSjVVRm8wZGxCUlNVRkJRVDA5SW4wPSAtLT5cblxuPGRpdiBkYXRhLXBhZ2VkdGFibGU9XCJmYWxzZVwiPlxuICA8c2NyaXB0IGRhdGEtcGFnZWR0YWJsZS1zb3VyY2UgdHlwZT1cImFwcGxpY2F0aW9uL2pzb25cIj5cbntcImNvbHVtbnNcIjpbe1wibGFiZWxcIjpbXCJcIl0sXCJuYW1lXCI6W1wiX3JuX1wiXSxcInR5cGVcIjpbXCJcIl0sXCJhbGlnblwiOltcImxlZnRcIl19LHtcImxhYmVsXCI6W1wiYmluYXJ5XCJdLFwibmFtZVwiOlsxXSxcInR5cGVcIjpbXCJjaHJcIl0sXCJhbGlnblwiOltcImxlZnRcIl19LHtcImxhYmVsXCI6W1wic291cmNlXCJdLFwibmFtZVwiOlsyXSxcInR5cGVcIjpbXCJjaHJcIl0sXCJhbGlnblwiOltcImxlZnRcIl19LHtcImxhYmVsXCI6W1wibmVlZHNfY29tcGlsYXRpb25cIl0sXCJuYW1lXCI6WzNdLFwidHlwZVwiOltcImxnbFwiXSxcImFsaWduXCI6W1wicmlnaHRcIl19XSxcImRhdGFcIjpbe1wiMVwiOlwiMS44LjFcIixcIjJcIjpcIjEuOS4wXCIsXCIzXCI6XCJUUlVFXCIsXCJfcm5fXCI6XCJwc1wifSx7XCIxXCI6XCI2LjIuMFwiLFwiMlwiOlwiNi4yLjFcIixcIjNcIjpcIlRSVUVcIixcIl9ybl9cIjpcImN1cmxcIn1dLFwib3B0aW9uc1wiOntcImNvbHVtbnNcIjp7XCJtaW5cIjp7fSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOlszXX0sXCJyb3dzXCI6e1wibWluXCI6WzEwXSxcIm1heFwiOlsxMF0sXCJ0b3RhbFwiOlsyXX0sXCJwYWdlc1wiOnt9fX1cbiAgPFwvc2NyaXB0PlxuPFwvZGl2PlxuXG48IS0tIHJuYi1mcmFtZS1lbmQgLS0+XG4ifQ== -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6MiwibmNvbCI6Mywic3VtbWFyeSI6W119LCJyZGYiOiJINHNJQUFBQUFBQUFCbVZRWFV2RU1CRGNTOXBLQzRyaTd6QmNUNUR6WGZ3Qm9uQnZrcWJ4Q09TU2t2VDgrUE9uMjVxRkdoOUNaaWN6dTV0NWV0amROcnNHQURnVUJRTmVJb1R5NWZueFpndUFCTUFLQ3Fpbit4TkYxN01TNEJJUFN3OWxLN2FpcGVKT2JNVDZ2K0lleVlXaVJkRE1pbW5BZlA0TUs1MDg2SmphOEVSV25YRXlmRkVWL1RFb25hb3JwM1VmWDVVL0RNYkswWGlYZGF5RC94RExyclFjRzJKQ2hUb0dteStpckl4a0liTHA1U2pGVzhCdVdKMHl5NWtmcHZsb1lsTmNWV1plaFl5b3JlbUNERWJuWS9qZzlpbW5sQkdjcDVzdE1QK2R6NzZUdmFLQXROc2JSd0dWVm5iYVV1ZGV2eWQ0Z2JuTXNZZ2hHRGZTRDVHTll2U2pKRXVqdkNWbS9qT2NmZ0J5UFo0dlBRSUFBQT09In0= -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["binary"],"name":[1],"type":["chr"],"align":["left"]},{"label":["source"],"name":[2],"type":["chr"],"align":["left"]},{"label":["needs_compilation"],"name":[3],"type":["lgl"],"align":["right"]}],"data":[{"1":"1.8.1","2":"1.9.0","3":"TRUE","_rn_":"ps"},{"1":"6.2.0","2":"6.2.1","3":"TRUE","_rn_":"curl"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[2]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG4gIEJpbmFyaWVzIHdpbGwgYmUgaW5zdGFsbGVkXG4ifQ== -->
-<pre><code>
-  Binaries will be installed</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoidHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L2NvbG9yc3BhY2VfMi4xLTEuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCAyNjY4NDI3IGJ5dGVzICgyLjUgTUIpXG5kb3dubG9hZGVkIDIuNSBNQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvY29udHJpYi80LjQvc3lzXzMuNC4zLnppcCdcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24vemlwJyBsZW5ndGggNDgxMDkgYnl0ZXMgKDQ2IEtCKVxuZG93bmxvYWRlZCA0NiBLQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvY29udHJpYi80LjQvcHNfMS44LjEuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCA2NDUzNzAgYnl0ZXMgKDYzMCBLQilcbmRvd25sb2FkZWQgNjMwIEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9mYXJ2ZXJfMi4xLjIuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCAxNTIwMDk0IGJ5dGVzICgxLjQgTUIpXG5kb3dubG9hZGVkIDEuNCBNQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvY29udHJpYi80LjQvbGFiZWxpbmdfMC40LjMuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCA2MzE2OSBieXRlcyAoNjEgS0IpXG5kb3dubG9hZGVkIDYxIEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9tdW5zZWxsXzAuNS4xLnppcCdcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24vemlwJyBsZW5ndGggMjQ1OTMzIGJ5dGVzICgyNDAgS0IpXG5kb3dubG9hZGVkIDI0MCBLQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvY29udHJpYi80LjQvUkNvbG9yQnJld2VyXzEuMS0zLnppcCdcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24vemlwJyBsZW5ndGggNTQ0NzEgYnl0ZXMgKDUzIEtCKVxuZG93bmxvYWRlZCA1MyBLQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvY29udHJpYi80LjQvdmlyaWRpc0xpdGVfMC40LjIuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCAxMzAwOTY2IGJ5dGVzICgxLjIgTUIpXG5kb3dubG9hZGVkIDEuMiBNQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvY29udHJpYi80LjQvcmVtYXRjaF8yLjAuMC56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDE5NDYwIGJ5dGVzICgxOSBLQilcbmRvd25sb2FkZWQgMTkgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L2Fza3Bhc3NfMS4yLjEuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCA3NDgwNiBieXRlcyAoNzMgS0IpXG5kb3dubG9hZGVkIDczIEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9wcm9jZXNzeF8zLjguNS56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDY4OTY2OCBieXRlcyAoNjczIEtCKVxuZG93bmxvYWRlZCA2NzMgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L2Jsb2JfMS4yLjQuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCA1MDAyMyBieXRlcyAoNDggS0IpXG5kb3dubG9hZGVkIDQ4IEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9EQklfMS4yLjMuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCA5NDE0ODYgYnl0ZXMgKDkxOSBLQilcbmRvd25sb2FkZWQgOTE5IEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9kYXRhLnRhYmxlXzEuMTYuNC56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDI2Njk4NzggYnl0ZXMgKDIuNSBNQilcbmRvd25sb2FkZWQgMi41IE1CXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9ndGFibGVfMC4zLjYuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCAyNTA4MTUgYnl0ZXMgKDI0NCBLQilcbmRvd25sb2FkZWQgMjQ0IEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9pc29iYW5kXzAuMi43LnppcCdcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24vemlwJyBsZW5ndGggMTkyOTU2OCBieXRlcyAoMS44IE1CKVxuZG93bmxvYWRlZCAxLjggTUJcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L3NjYWxlc18xLjMuMC56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDcyMjAyNCBieXRlcyAoNzA1IEtCKVxuZG93bmxvYWRlZCA3MDUgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L2dhcmdsZV8xLjUuMi56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDgxMDQzMSBieXRlcyAoNzkxIEtCKVxuZG93bmxvYWRlZCA3OTEgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L3V1aWRfMS4yLTEuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCA1MjkzNCBieXRlcyAoNTEgS0IpXG5kb3dubG9hZGVkIDUxIEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9jZWxscmFuZ2VyXzEuMS4wLnppcCdcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24vemlwJyBsZW5ndGggMTA3NzU4IGJ5dGVzICgxMDUgS0IpXG5kb3dubG9hZGVkIDEwNSBLQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvY29udHJpYi80LjQvY3VybF82LjIuMC56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDM1MDE2MTIgYnl0ZXMgKDMuMyBNQilcbmRvd25sb2FkZWQgMy4zIE1CXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9pZHNfMS4wLjEuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCAxMjY1NTggYnl0ZXMgKDEyMyBLQilcbmRvd25sb2FkZWQgMTIzIEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9yZW1hdGNoMl8yLjEuMi56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDQ5MDY0IGJ5dGVzICg0NyBLQilcbmRvd25sb2FkZWQgNDcgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L29wZW5zc2xfMi4zLjIuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCAzNDcxMDM5IGJ5dGVzICgzLjMgTUIpXG5kb3dubG9hZGVkIDMuMyBNQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvY29udHJpYi80LjQvdGltZWNoYW5nZV8wLjMuMC56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDUxNjYzOCBieXRlcyAoNTA0IEtCKVxuZG93bmxvYWRlZCA1MDQgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L3N5c3RlbWZvbnRzXzEuMi4xLnppcCdcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24vemlwJyBsZW5ndGggMTYwMjM0NSBieXRlcyAoMS41IE1CKVxuZG93bmxvYWRlZCAxLjUgTUJcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L3RleHRzaGFwaW5nXzEuMC4wLnppcCdcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24vemlwJyBsZW5ndGggMTQ2ODM5MCBieXRlcyAoMS40IE1CKVxuZG93bmxvYWRlZCAxLjQgTUJcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L2NhbGxyXzMuNy42LnppcCdcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24vemlwJyBsZW5ndGggNDc5NTY0IGJ5dGVzICg0NjggS0IpXG5kb3dubG9hZGVkIDQ2OCBLQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvY29udHJpYi80LjQvc2VsZWN0cl8wLjQtMi56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDQ5NjA3NiBieXRlcyAoNDg0IEtCKVxuZG93bmxvYWRlZCA0ODQgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L2NvbmZsaWN0ZWRfMS4yLjAuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCA1Nzc5NSBieXRlcyAoNTYgS0IpXG5kb3dubG9hZGVkIDU2IEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9kYnBseXJfMi41LjAuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCAxMjY4ODkwIGJ5dGVzICgxLjIgTUIpXG5kb3dubG9hZGVkIDEuMiBNQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvY29udHJpYi80LjQvZHRwbHlyXzEuMy4xLnppcCdcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24vemlwJyBsZW5ndGggMzYwMDYwIGJ5dGVzICgzNTEgS0IpXG5kb3dubG9hZGVkIDM1MSBLQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvY29udHJpYi80LjQvZ2dwbG90Ml8zLjUuMS56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDUwMjE4OTkgYnl0ZXMgKDQuOCBNQilcbmRvd25sb2FkZWQgNC44IE1CXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9nb29nbGVkcml2ZV8yLjEuMS56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDE5MTA2NzYgYnl0ZXMgKDEuOCBNQilcbmRvd25sb2FkZWQgMS44IE1CXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9nb29nbGVzaGVldHM0XzEuMS4xLnppcCdcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24vemlwJyBsZW5ndGggNTI2MDI2IGJ5dGVzICg1MTMgS0IpXG5kb3dubG9hZGVkIDUxMyBLQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvY29udHJpYi80LjQvaHR0cl8xLjQuNy56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDUwMDc2OSBieXRlcyAoNDg5IEtCKVxuZG93bmxvYWRlZCA0ODkgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L2x1YnJpZGF0ZV8xLjkuNC56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDk5MDI2MSBieXRlcyAoOTY3IEtCKVxuZG93bmxvYWRlZCA5NjcgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L21vZGVscl8wLjEuMTEuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCAyMDQwNDcgYnl0ZXMgKDE5OSBLQilcbmRvd25sb2FkZWQgMTk5IEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9yYWdnXzEuMy4zLnppcCdcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24vemlwJyBsZW5ndGggMTk2NjUxMyBieXRlcyAoMS45IE1CKVxuZG93bmxvYWRlZCAxLjkgTUJcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L3JlYWR4bF8xLjQuMy56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDEyMDQyNDggYnl0ZXMgKDEuMSBNQilcbmRvd25sb2FkZWQgMS4xIE1CXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9yZXByZXhfMi4xLjEuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCA1MDU0MDMgYnl0ZXMgKDQ5MyBLQilcbmRvd25sb2FkZWQgNDkzIEtCXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC9yc3R1ZGlvYXBpXzAuMTcuMS56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDM0NTk1NiBieXRlcyAoMzM3IEtCKVxuZG93bmxvYWRlZCAzMzcgS0JcblxudHJ5aW5nIFVSTCAnaHR0cHM6Ly9jcmFuLnJzdHVkaW8uY29tL2Jpbi93aW5kb3dzL2NvbnRyaWIvNC40L3J2ZXN0XzEuMC40LnppcCdcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24vemlwJyBsZW5ndGggMzEwNzcxIGJ5dGVzICgzMDMgS0IpXG5kb3dubG9hZGVkIDMwMyBLQlxuXG50cnlpbmcgVVJMICdodHRwczovL2NyYW4ucnN0dWRpby5jb20vYmluL3dpbmRvd3MvY29udHJpYi80LjQveG1sMl8xLjMuNi56aXAnXG5Db250ZW50IHR5cGUgJ2FwcGxpY2F0aW9uL3ppcCcgbGVuZ3RoIDE2MTkxNDkgYnl0ZXMgKDEuNSBNQilcbmRvd25sb2FkZWQgMS41IE1CXG5cbnRyeWluZyBVUkwgJ2h0dHBzOi8vY3Jhbi5yc3R1ZGlvLmNvbS9iaW4vd2luZG93cy9jb250cmliLzQuNC90aWR5dmVyc2VfMi4wLjAuemlwJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi96aXAnIGxlbmd0aCA0MzE2NTEgYnl0ZXMgKDQyMSBLQilcbmRvd25sb2FkZWQgNDIxIEtCXG4ifQ== -->
-<pre><code>trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/colorspace_2.1-1.zip&#39;
-Content type &#39;application/zip&#39; length 2668427 bytes (2.5 MB)
-downloaded 2.5 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/sys_3.4.3.zip&#39;
-Content type &#39;application/zip&#39; length 48109 bytes (46 KB)
-downloaded 46 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/ps_1.8.1.zip&#39;
-Content type &#39;application/zip&#39; length 645370 bytes (630 KB)
-downloaded 630 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/farver_2.1.2.zip&#39;
-Content type &#39;application/zip&#39; length 1520094 bytes (1.4 MB)
-downloaded 1.4 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/labeling_0.4.3.zip&#39;
-Content type &#39;application/zip&#39; length 63169 bytes (61 KB)
-downloaded 61 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/munsell_0.5.1.zip&#39;
-Content type &#39;application/zip&#39; length 245933 bytes (240 KB)
-downloaded 240 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/RColorBrewer_1.1-3.zip&#39;
-Content type &#39;application/zip&#39; length 54471 bytes (53 KB)
-downloaded 53 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/viridisLite_0.4.2.zip&#39;
-Content type &#39;application/zip&#39; length 1300966 bytes (1.2 MB)
-downloaded 1.2 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/rematch_2.0.0.zip&#39;
-Content type &#39;application/zip&#39; length 19460 bytes (19 KB)
-downloaded 19 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/askpass_1.2.1.zip&#39;
-Content type &#39;application/zip&#39; length 74806 bytes (73 KB)
-downloaded 73 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/processx_3.8.5.zip&#39;
-Content type &#39;application/zip&#39; length 689668 bytes (673 KB)
-downloaded 673 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/blob_1.2.4.zip&#39;
-Content type &#39;application/zip&#39; length 50023 bytes (48 KB)
-downloaded 48 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/DBI_1.2.3.zip&#39;
-Content type &#39;application/zip&#39; length 941486 bytes (919 KB)
-downloaded 919 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/data.table_1.16.4.zip&#39;
-Content type &#39;application/zip&#39; length 2669878 bytes (2.5 MB)
-downloaded 2.5 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/gtable_0.3.6.zip&#39;
-Content type &#39;application/zip&#39; length 250815 bytes (244 KB)
-downloaded 244 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/isoband_0.2.7.zip&#39;
-Content type &#39;application/zip&#39; length 1929568 bytes (1.8 MB)
-downloaded 1.8 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/scales_1.3.0.zip&#39;
-Content type &#39;application/zip&#39; length 722024 bytes (705 KB)
-downloaded 705 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/gargle_1.5.2.zip&#39;
-Content type &#39;application/zip&#39; length 810431 bytes (791 KB)
-downloaded 791 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/uuid_1.2-1.zip&#39;
-Content type &#39;application/zip&#39; length 52934 bytes (51 KB)
-downloaded 51 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/cellranger_1.1.0.zip&#39;
-Content type &#39;application/zip&#39; length 107758 bytes (105 KB)
-downloaded 105 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/curl_6.2.0.zip&#39;
-Content type &#39;application/zip&#39; length 3501612 bytes (3.3 MB)
-downloaded 3.3 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/ids_1.0.1.zip&#39;
-Content type &#39;application/zip&#39; length 126558 bytes (123 KB)
-downloaded 123 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/rematch2_2.1.2.zip&#39;
-Content type &#39;application/zip&#39; length 49064 bytes (47 KB)
-downloaded 47 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/openssl_2.3.2.zip&#39;
-Content type &#39;application/zip&#39; length 3471039 bytes (3.3 MB)
-downloaded 3.3 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/timechange_0.3.0.zip&#39;
-Content type &#39;application/zip&#39; length 516638 bytes (504 KB)
-downloaded 504 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/systemfonts_1.2.1.zip&#39;
-Content type &#39;application/zip&#39; length 1602345 bytes (1.5 MB)
-downloaded 1.5 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/textshaping_1.0.0.zip&#39;
-Content type &#39;application/zip&#39; length 1468390 bytes (1.4 MB)
-downloaded 1.4 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/callr_3.7.6.zip&#39;
-Content type &#39;application/zip&#39; length 479564 bytes (468 KB)
-downloaded 468 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/selectr_0.4-2.zip&#39;
-Content type &#39;application/zip&#39; length 496076 bytes (484 KB)
-downloaded 484 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/conflicted_1.2.0.zip&#39;
-Content type &#39;application/zip&#39; length 57795 bytes (56 KB)
-downloaded 56 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/dbplyr_2.5.0.zip&#39;
-Content type &#39;application/zip&#39; length 1268890 bytes (1.2 MB)
-downloaded 1.2 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/dtplyr_1.3.1.zip&#39;
-Content type &#39;application/zip&#39; length 360060 bytes (351 KB)
-downloaded 351 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/ggplot2_3.5.1.zip&#39;
-Content type &#39;application/zip&#39; length 5021899 bytes (4.8 MB)
-downloaded 4.8 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/googledrive_2.1.1.zip&#39;
-Content type &#39;application/zip&#39; length 1910676 bytes (1.8 MB)
-downloaded 1.8 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/googlesheets4_1.1.1.zip&#39;
-Content type &#39;application/zip&#39; length 526026 bytes (513 KB)
-downloaded 513 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/httr_1.4.7.zip&#39;
-Content type &#39;application/zip&#39; length 500769 bytes (489 KB)
-downloaded 489 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/lubridate_1.9.4.zip&#39;
-Content type &#39;application/zip&#39; length 990261 bytes (967 KB)
-downloaded 967 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/modelr_0.1.11.zip&#39;
-Content type &#39;application/zip&#39; length 204047 bytes (199 KB)
-downloaded 199 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/ragg_1.3.3.zip&#39;
-Content type &#39;application/zip&#39; length 1966513 bytes (1.9 MB)
-downloaded 1.9 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/readxl_1.4.3.zip&#39;
-Content type &#39;application/zip&#39; length 1204248 bytes (1.1 MB)
-downloaded 1.1 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/reprex_2.1.1.zip&#39;
-Content type &#39;application/zip&#39; length 505403 bytes (493 KB)
-downloaded 493 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/rstudioapi_0.17.1.zip&#39;
-Content type &#39;application/zip&#39; length 345956 bytes (337 KB)
-downloaded 337 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/rvest_1.0.4.zip&#39;
-Content type &#39;application/zip&#39; length 310771 bytes (303 KB)
-downloaded 303 KB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/xml2_1.3.6.zip&#39;
-Content type &#39;application/zip&#39; length 1619149 bytes (1.5 MB)
-downloaded 1.5 MB
-
-trying URL &#39;https://cran.rstudio.com/bin/windows/contrib/4.4/tidyverse_2.0.0.zip&#39;
-Content type &#39;application/zip&#39; length 431651 bytes (421 KB)
-downloaded 421 KB</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoicGFja2FnZSDigJhjb2xvcnNwYWNl4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhzeXPigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5wYWNrYWdlIOKAmHBz4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhmYXJ2ZXLigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5wYWNrYWdlIOKAmGxhYmVsaW5n4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhtdW5zZWxs4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhSQ29sb3JCcmV3ZXLigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5wYWNrYWdlIOKAmHZpcmlkaXNMaXRl4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhyZW1hdGNo4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhhc2twYXNz4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhwcm9jZXNzeOKAmSBzdWNjZXNzZnVsbHkgdW5wYWNrZWQgYW5kIE1ENSBzdW1zIGNoZWNrZWRcbnBhY2thZ2Ug4oCYYmxvYuKAmSBzdWNjZXNzZnVsbHkgdW5wYWNrZWQgYW5kIE1ENSBzdW1zIGNoZWNrZWRcbnBhY2thZ2Ug4oCYREJJ4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhkYXRhLnRhYmxl4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhndGFibGXigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5wYWNrYWdlIOKAmGlzb2JhbmTigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5wYWNrYWdlIOKAmHNjYWxlc+KAmSBzdWNjZXNzZnVsbHkgdW5wYWNrZWQgYW5kIE1ENSBzdW1zIGNoZWNrZWRcbnBhY2thZ2Ug4oCYZ2FyZ2xl4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJh1dWlk4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhjZWxscmFuZ2Vy4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhjdXJs4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhpZHPigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5wYWNrYWdlIOKAmHJlbWF0Y2gy4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhvcGVuc3Ns4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJh0aW1lY2hhbmdl4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhzeXN0ZW1mb250c+KAmSBzdWNjZXNzZnVsbHkgdW5wYWNrZWQgYW5kIE1ENSBzdW1zIGNoZWNrZWRcbnBhY2thZ2Ug4oCYdGV4dHNoYXBpbmfigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5wYWNrYWdlIOKAmGNhbGxy4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhzZWxlY3Ry4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhjb25mbGljdGVk4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhkYnBseXLigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5wYWNrYWdlIOKAmGR0cGx5cuKAmSBzdWNjZXNzZnVsbHkgdW5wYWNrZWQgYW5kIE1ENSBzdW1zIGNoZWNrZWRcbnBhY2thZ2Ug4oCYZ2dwbG90MuKAmSBzdWNjZXNzZnVsbHkgdW5wYWNrZWQgYW5kIE1ENSBzdW1zIGNoZWNrZWRcbnBhY2thZ2Ug4oCYZ29vZ2xlZHJpdmXigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5wYWNrYWdlIOKAmGdvb2dsZXNoZWV0czTigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5wYWNrYWdlIOKAmGh0dHLigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5wYWNrYWdlIOKAmGx1YnJpZGF0ZeKAmSBzdWNjZXNzZnVsbHkgdW5wYWNrZWQgYW5kIE1ENSBzdW1zIGNoZWNrZWRcbnBhY2thZ2Ug4oCYbW9kZWxy4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhyYWdn4oCZIHN1Y2Nlc3NmdWxseSB1bnBhY2tlZCBhbmQgTUQ1IHN1bXMgY2hlY2tlZFxucGFja2FnZSDigJhyZWFkeGzigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5wYWNrYWdlIOKAmHJlcHJleOKAmSBzdWNjZXNzZnVsbHkgdW5wYWNrZWQgYW5kIE1ENSBzdW1zIGNoZWNrZWRcbnBhY2thZ2Ug4oCYcnN0dWRpb2FwaeKAmSBzdWNjZXNzZnVsbHkgdW5wYWNrZWQgYW5kIE1ENSBzdW1zIGNoZWNrZWRcbnBhY2thZ2Ug4oCYcnZlc3TigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5wYWNrYWdlIOKAmHhtbDLigJkgc3VjY2Vzc2Z1bGx5IHVucGFja2VkIGFuZCBNRDUgc3VtcyBjaGVja2VkXG5wYWNrYWdlIOKAmHRpZHl2ZXJzZeKAmSBzdWNjZXNzZnVsbHkgdW5wYWNrZWQgYW5kIE1ENSBzdW1zIGNoZWNrZWRcblxuVGhlIGRvd25sb2FkZWQgYmluYXJ5IHBhY2thZ2VzIGFyZSBpblxuXHRDOlxcVXNlcnNcXGNvY29uXFxBcHBEYXRhXFxMb2NhbFxcVGVtcFxcUnRtcFk3d29KclxcZG93bmxvYWRlZF9wYWNrYWdlc1xuIn0= -->
-<pre><code>package ‘colorspace’ successfully unpacked and MD5 sums checked
-package ‘sys’ successfully unpacked and MD5 sums checked
-package ‘ps’ successfully unpacked and MD5 sums checked
-package ‘farver’ successfully unpacked and MD5 sums checked
-package ‘labeling’ successfully unpacked and MD5 sums checked
-package ‘munsell’ successfully unpacked and MD5 sums checked
-package ‘RColorBrewer’ successfully unpacked and MD5 sums checked
-package ‘viridisLite’ successfully unpacked and MD5 sums checked
-package ‘rematch’ successfully unpacked and MD5 sums checked
-package ‘askpass’ successfully unpacked and MD5 sums checked
-package ‘processx’ successfully unpacked and MD5 sums checked
-package ‘blob’ successfully unpacked and MD5 sums checked
-package ‘DBI’ successfully unpacked and MD5 sums checked
-package ‘data.table’ successfully unpacked and MD5 sums checked
-package ‘gtable’ successfully unpacked and MD5 sums checked
-package ‘isoband’ successfully unpacked and MD5 sums checked
-package ‘scales’ successfully unpacked and MD5 sums checked
-package ‘gargle’ successfully unpacked and MD5 sums checked
-package ‘uuid’ successfully unpacked and MD5 sums checked
-package ‘cellranger’ successfully unpacked and MD5 sums checked
-package ‘curl’ successfully unpacked and MD5 sums checked
-package ‘ids’ successfully unpacked and MD5 sums checked
-package ‘rematch2’ successfully unpacked and MD5 sums checked
-package ‘openssl’ successfully unpacked and MD5 sums checked
-package ‘timechange’ successfully unpacked and MD5 sums checked
-package ‘systemfonts’ successfully unpacked and MD5 sums checked
-package ‘textshaping’ successfully unpacked and MD5 sums checked
-package ‘callr’ successfully unpacked and MD5 sums checked
-package ‘selectr’ successfully unpacked and MD5 sums checked
-package ‘conflicted’ successfully unpacked and MD5 sums checked
-package ‘dbplyr’ successfully unpacked and MD5 sums checked
-package ‘dtplyr’ successfully unpacked and MD5 sums checked
-package ‘ggplot2’ successfully unpacked and MD5 sums checked
-package ‘googledrive’ successfully unpacked and MD5 sums checked
-package ‘googlesheets4’ successfully unpacked and MD5 sums checked
-package ‘httr’ successfully unpacked and MD5 sums checked
-package ‘lubridate’ successfully unpacked and MD5 sums checked
-package ‘modelr’ successfully unpacked and MD5 sums checked
-package ‘ragg’ successfully unpacked and MD5 sums checked
-package ‘readxl’ successfully unpacked and MD5 sums checked
-package ‘reprex’ successfully unpacked and MD5 sums checked
-package ‘rstudioapi’ successfully unpacked and MD5 sums checked
-package ‘rvest’ successfully unpacked and MD5 sums checked
-package ‘xml2’ successfully unpacked and MD5 sums checked
-package ‘tidyverse’ successfully unpacked and MD5 sums checked
-
-The downloaded binary packages are in
-    C:\Users\cocon\AppData\Local\Temp\RtmpY7woJr\downloaded_packages</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVJMnh2WVdRZ2FXNGdiR2xpY21GeWFXVnpJRnh1YVc1emRHRnNiQzV3WVdOcllXZGxjeWhjSW5ScFpIbDJaWEp6WlZ3aUtWeHVZR0JnSW4wPSAtLT5cblxuYGBgclxuI2xvYWQgaW4gbGlicmFyaWVzIFxuaW5zdGFsbC5wYWNrYWdlcyhcInRpZHl2ZXJzZVwiKVxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2xvYWQgaW4gbGlicmFyaWVzIFxuaW5zdGFsbC5wYWNrYWdlcyhcInRpZHl2ZXJzZVwiKVxuYGBgIn0= -->
-<pre class="r"><code>#load in libraries 
-install.packages(&quot;tidyverse&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gaW5zdGFsbC5wYWNrYWdlcyA6IFVwZGF0aW5nIGxvYWRlZCBwYWNrYWdlc1xuIn0= -->
-<pre><code>Error in install.packages : Updating loaded packages</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR2xpY21GeWVTaDBhV1I1ZG1WeWMyVXBYRzVnWUdBaWZRPT0gLS0+XG5cbmBgYHJcbmxpYnJhcnkodGlkeXZlcnNlKVxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
-<pre class="r"><code>library(tidyverse)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoi4pSA4pSAIEF0dGFjaGluZyBjb3JlIHRpZHl2ZXJzZSBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDIuMC4wIOKUgOKUgFxu4pyUIGRwbHlyICAgICAxLjEuNCAgICAg4pyUIHJlYWRyICAgICAyLjEuNVxu4pyUIGZvcmNhdHMgICAxLjAuMCAgICAg4pyUIHN0cmluZ3IgICAxLjUuMVxu4pyUIGdncGxvdDIgICAzLjUuMSAgICAg4pyUIHRpYmJsZSAgICAzLjIuMVxu4pyUIGx1YnJpZGF0ZSAxLjkuNCAgICAg4pyUIHRpZHlyICAgICAxLjMuMVxu4pyUIHB1cnJyICAgICAxLjAuMiAgICAg4pSA4pSAIENvbmZsaWN0cyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlX2NvbmZsaWN0cygpIOKUgOKUgFxu4pyWIGRwbHlyOjpmaWx0ZXIoKSBtYXNrcyBzdGF0czo6ZmlsdGVyKClcbuKcliBkcGx5cjo6bGFnKCkgICAgbWFza3Mgc3RhdHM6OmxhZygpXG7ihLkgVXNlIHRoZSBcdTAwMWJdODs7aHR0cDovL2NvbmZsaWN0ZWQuci1saWIub3JnL1x1MDAwN2NvbmZsaWN0ZWQgcGFja2FnZVx1MDAxYl04OztcdTAwMDcgdG8gZm9yY2UgYWxsIGNvbmZsaWN0cyB0byBiZWNvbWUgZXJyb3JzXG4ifQ== -->
-<pre><code>── Attaching core tidyverse packages ─────────────────────────────────────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     ── Conflicts ───────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR2xpY21GeWVTaG9ZWFpsYmlsY2JteHBZbkpoY25rb2NtVmhaSElwWEc1c2FXSnlZWEo1S0dSd2JIbHlLVnh1YkdsaWNtRnllU2gzY21sMFpYaHNLVnh1WUdCZ0luMD0gLS0+XG5cbmBgYHJcbmxpYnJhcnkoaGF2ZW4pXG5saWJyYXJ5KHJlYWRyKVxubGlicmFyeShkcGx5cilcbmxpYnJhcnkod3JpdGV4bClcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShoYXZlbilcbmxpYnJhcnkocmVhZHIpXG5saWJyYXJ5KGRwbHlyKVxubGlicmFyeSh3cml0ZXhsKVxuYGBgIn0= -->
-<pre class="r"><code>library(haven)
-library(readr)
-library(dplyr)
-library(writexl)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gbGlicmFyeSh3cml0ZXhsKSA6IHRoZXJlIGlzIG5vIHBhY2thZ2UgY2FsbGVkIOKAmHdyaXRleGzigJlcbiJ9 -->
-<pre><code>Error in library(writexl) : there is no package called ‘writexl’</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiaGVyZSgpIHN0YXJ0cyBhdCBDOi9Vc2Vycy9jb2Nvbi9PbmVEcml2ZS9Eb2N1bWVudHMvR2l0SHViL0NPR1MxNjRfTllfUmVzb2x1dGlvblxuIn0= -->
+<pre><code>here() starts at C:/Users/cocon/OneDrive/Documents/GitHub/COGS164_NY_Resolution</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Add a new chunk by clicking the <em>Insert Chunk</em> button on the
-toolbar or by pressing <em>Ctrl+Alt+I</em>.</p>
-<p>When you save the notebook, an HTML file containing the code and
-output will be saved alongside it (click the <em>Preview</em> button or
-press <em>Ctrl+Shift+K</em> to preview the HTML file).</p>
-<p>The preview shows you a rendered HTML copy of the contents of the
-editor. Consequently, unlike <em>Knit</em>, <em>Preview</em> does not
-run any R code chunks. Instead, the output of the chunk when it was last
-run in the editor is displayed.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVJM1Z3WkdGMGFXNW5JR052YkhWdGJpQnVZVzFsY3lCY2JrSmhjMlZzYVc1bElEMGdRbUZ6Wld4cGJtVWdKVDRsWEc0Z0lISmxibUZ0WlNoY0ltVnRZV2xzWENJZ1BTQkZiV0ZwYkM1QlpHUnlaWE56TEZ4dUlDQWdJQ0FnSUNBZ1kyOXVjMlZ1ZENBOUlFUnZMbmx2ZFM1amIyNXpaVzUwTG5SdkxtRnVjM2RsY21sdVp5NXhkV1Z6ZEdsdmJuTXVhRzl1WlhOMGJIa3VMbU52Ym5OcGMzUmxiblJzZVM0dVlXNWtMbU52YlhCc1pYUnBibWN1YzNWeWRtVjVjeTVwYmk1aExuUnBiV1ZzZVM1dFlXNXVaWEl1WVhNdWRHaGxlUzVoY21VdWMyVnVkQzV2ZFhRdWRHOHVlVzkxTGk1QlpHUnBkR2x2Ym1Gc2JIa3VMbVJ2TG5sdmRTNWpiMjV6Wlc1MExuUnZMbUpsYVc1bkxtTnZiblJoWTNSbFpDNW1iM0l1Wm05c2JHOTNMblZ3Y3k1cFppNTViM1V1YzNSdmNDNXlaWE53YjI1a2FXNW5MaTRzWEc0Z0lDQWdJQ0FnSUNCR2FYSnpkRkpsYzI5c2RYUnBiMjRnUFNCWGFHRjBMbWx6TG5sdmRYSXViVzl6ZEM1cGJYQnZjblJoYm5RdVRtVjNMbGxsWVhKekxsSmxjMjlzZFhScGIyNHVabTl5TGpJd01qVXVMa2xtTG5sdmRTNWtieTV1YjNRdWFHRjJaUzV2Ym1VdUxuZG9ZWFF1YVhNdWVXOTFjaTV5WlhOdmJIVjBhVzl1TG1admNpNTBhR1V1VjJsdWRHVnlMbEYxWVhKMFpYSXVMQ0JjYmlBZ0lDQWdJQ0FnSUZCeWFXOXlSWGh3WlhKcFpXNWpaU0E5SUVoaGRtVXVlVzkxTG1WMlpYSXVZWFIwWlcxd2RHVmtMblJvYVhNdWNtVnpiMngxZEdsdmJpNWlaV1p2Y21VdUxGeHVJQ0FnSUNBZ0lDQWdUM1JvWlhKU1pYTnZiSFYwYVc5dWN5QTlJRWxtTG5sdmRTNW9ZWFpsTG0xMWJIUnBjR3hsTGs1bGR5NVpaV0Z5Y3k0dVYybHVkR1Z5TGxGMVlYSjBaWEl1VW1WemIyeDFkR2x2Ym5NdUxuQnNaV0Z6WlM1c2FYTjBMblJvWlcwdWIzVjBMbUpsYkc5M0xpNUVieTV1YjNRdWFXNWpiSFZrWlM1MGFHVXVjbVZ6YjJ4MWRHbHZiaTVrYVhOamRYTnpaV1F1YVc0dWRHaGxMbkJ5WlhacGIzVnpMbkYxWlhOMGFXOXVjeTR1TEZ4dUlDQWdJQ0FnSUNBZ1VtVnpiMngxZEdsdmJrTmhkR1ZuYjNKNUlEMGdWMmhwWTJndVkyRjBaV2R2Y25rdVltVnpkQzV5Wldac1pXTjBjeTU1YjNWeUxtMXZjM1F1YVcxd2IzSjBZVzUwTGs1bGR5NVpaV0Z5Y3k1U1pYTnZiSFYwYVc5dUxpNVRaV3hsWTNRdUxrOTBhR1Z5TGk1cFppNXViMjVsTG1Gd2NHeDVMaXhjYmlBZ0lDQWdJQ0FnSUZScGJXVlRjR1Z1ZENBOUlGTnBibU5sTG5Sb1pTNXpkR0Z5ZEM1dlppNHlNREkxTGk1b2IzY3ViRzl1Wnk1b1lYWmxMbmx2ZFM1clpYQjBMblZ3TG5kcGRHZ3VkR2hwY3k1eVpYTnZiSFYwYVc5dUxpeGNiaUFnSUNBZ0lDQWdJRWx1YVhScFlXeE5iM1JwZG1GMGFXOXVJRDBnVjJoaGRDNXRiM1JwZG1GMFpXUXVlVzkxTG5SdkxtRmtiM0IwTG5Sb2FYTXVUbVYzTGxsbFlYSnpMbkpsYzI5c2RYUnBiMjR1TGxCc1pXRnpaUzVpWlM1aGN5NXpjR1ZqYVdacFl5NWhjeTV3YjNOemFXSnNaUzVwYmk1eVpXZGhjbVJ6TG5SdkxubHZkWEl1WjI5aGJDNHViVzkwYVhaaGRHbHZiaTR1ZDJoaGRDNXBibk53YVhKbFpDNTViM1V1ZEc4dWMzUmhjblF1WlhSakxpNHNYRzRnSUNBZ0lDQWdJQ0JUVWtaaFkzUnZjbk1nUFNCSmJpNWhaR1JwZEdsdmJpNTBieTU1YjNWeUxuSmxjM0J2Ym5ObExpNTNhR0YwTG1aaFkzUnZjbk11YldGNUxtaGhkbVV1Ylc5MGFYWmhkR1ZrTG5sdmRTNTBieTVvWVhabExuUm9hWE11Y21WemIyeDFkR2x2Ymk0dVVHeGxZWE5sTG5ObGJHVmpkQzVoYkd3dWRHaGhkQzVoY0hCc2VTNHNYRzRnSUNBZ0lDQWdJQ0JRYkdGdWN5QTlJRUZ5WlM1MGFHVnlaUzVoYm5rdWMzQmxZMmxtYVdNdWNHeGhibk11ZVc5MUxtaGhkbVV1YVc0dWNHeGhZMlV1ZEc4dWJXVmxkQzU1YjNWeUxuSmxjMjlzZFhScGIyNHVMaTVGTG1jdUxuZHZjbXRwYm1jdWIzVjBMak40TG1FdWQyVmxheTR1ZDJGcmFXNW5MblZ3TG1GMExqWXVZVzB1WlhabGNua3VaR0Y1TGk1SlppNXpieTR1Y0d4bFlYTmxMbVY0Y0d4aGFXNHVlVzkxY2k1d2JHRnVMaTRzWEc0Z0lDQWdJQ0FnSUNCSWIzVnljeUE5SUVsa1pXRnNiSGt1TG1GaWIzVjBMbWh2ZHk1dFlXNTVMbWh2ZFhKekxtRXVkMlZsYXk1a2J5NTViM1V1ZDJGdWRDNTBieTVrWldScFkyRjBaUzUwYnk1aFkyaHBaWFpwYm1jdWVXOTFjaTV5WlhOdmJIVjBhVzl1TGl4Y2JpQWdJQ0FnSUNBZ0lFVjRZMmwwWlcxbGJuUWdQU0JCZEM1MGFHbHpMbTF2YldWdWRDNHVhRzkzTG1WNFkybDBaV1F1WVhKbExubHZkUzVwYmk1eVpXZGhjbVJ6TG5SdkxuUmhhMmx1Wnk1emRHVndjeTUwYnk1aFkyaHBaWFpsTG5sdmRYSXVibVYzTG5sbFlYSnpMbkpsYzI5c2RYUnBiMjR1TEZ4dUlDQWdJQ0FnSUNBZ1JHVmthV05oZEdsdmJpQTlJRUYwTG5Sb2FYTXVkR2x0WlM0dWFHOTNMbVJsWkdsallYUmxaQzVoY21VdWVXOTFMblJ2ZDJGeVpITXVZMjl1ZEdsdWRXbHVaeTUwYnk1aFkyaHBaWFpsTG5sdmRYSXVibVYzTG5sbFlYSnpMbkpsYzI5c2RYUnBiMjR1TENCY2JpQWdJQ0FnSUNBZ0lFZHlZV1JsSUQwZ1YyaGhkQzU1WldGeUxtRnlaUzU1YjNVdVlYUXVWVU5UUkM0c1hHNGdJQ0FnSUNBZ0lDQlNaV3hwWjJsdmJpQTlJRkpsYkdsbmFXOTFjeTVCWm1acGJHbGhkR2x2Yml4Y2JpQWdJQ0FnSUNBZ0lGSmxiR0YwYVc5dWMyaHBjQ0E5SUZKbGJHRjBhVzl1YzJocGNDNVRkR0YwZFhNcElDVStKVnh1SUNCelpXeGxZM1FvTFc5dVpWOXZaaWhVYVcxbGMzUmhiWEFwS1Z4dVhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxuI3VwZGF0aW5nIGNvbHVtbiBuYW1lcyBcbkJhc2VsaW5lID0gQmFzZWxpbmUgJT4lXG4gIHJlbmFtZShcImVtYWlsXCIgPSBFbWFpbC5BZGRyZXNzLFxuICAgICAgICAgY29uc2VudCA9IERvLnlvdS5jb25zZW50LnRvLmFuc3dlcmluZy5xdWVzdGlvbnMuaG9uZXN0bHkuLmNvbnNpc3RlbnRseS4uYW5kLmNvbXBsZXRpbmcuc3VydmV5cy5pbi5hLnRpbWVseS5tYW5uZXIuYXMudGhleS5hcmUuc2VudC5vdXQudG8ueW91Li5BZGRpdGlvbmFsbHkuLmRvLnlvdS5jb25zZW50LnRvLmJlaW5nLmNvbnRhY3RlZC5mb3IuZm9sbG93LnVwcy5pZi55b3Uuc3RvcC5yZXNwb25kaW5nLi4sXG4gICAgICAgICBGaXJzdFJlc29sdXRpb24gPSBXaGF0LmlzLnlvdXIubW9zdC5pbXBvcnRhbnQuTmV3LlllYXJzLlJlc29sdXRpb24uZm9yLjIwMjUuLklmLnlvdS5kby5ub3QuaGF2ZS5vbmUuLndoYXQuaXMueW91ci5yZXNvbHV0aW9uLmZvci50aGUuV2ludGVyLlF1YXJ0ZXIuLCBcbiAgICAgICAgIFByaW9yRXhwZXJpZW5jZSA9IEhhdmUueW91LmV2ZXIuYXR0ZW1wdGVkLnRoaXMucmVzb2x1dGlvbi5iZWZvcmUuLFxuICAgICAgICAgT3RoZXJSZXNvbHV0aW9ucyA9IElmLnlvdS5oYXZlLm11bHRpcGxlLk5ldy5ZZWFycy4uV2ludGVyLlF1YXJ0ZXIuUmVzb2x1dGlvbnMuLnBsZWFzZS5saXN0LnRoZW0ub3V0LmJlbG93Li5Eby5ub3QuaW5jbHVkZS50aGUucmVzb2x1dGlvbi5kaXNjdXNzZWQuaW4udGhlLnByZXZpb3VzLnF1ZXN0aW9ucy4uLFxuICAgICAgICAgUmVzb2x1dGlvbkNhdGVnb3J5ID0gV2hpY2guY2F0ZWdvcnkuYmVzdC5yZWZsZWN0cy55b3VyLm1vc3QuaW1wb3J0YW50Lk5ldy5ZZWFycy5SZXNvbHV0aW9uLi5TZWxlY3QuLk90aGVyLi5pZi5ub25lLmFwcGx5LixcbiAgICAgICAgIFRpbWVTcGVudCA9IFNpbmNlLnRoZS5zdGFydC5vZi4yMDI1Li5ob3cubG9uZy5oYXZlLnlvdS5rZXB0LnVwLndpdGgudGhpcy5yZXNvbHV0aW9uLixcbiAgICAgICAgIEluaXRpYWxNb3RpdmF0aW9uID0gV2hhdC5tb3RpdmF0ZWQueW91LnRvLmFkb3B0LnRoaXMuTmV3LlllYXJzLnJlc29sdXRpb24uLlBsZWFzZS5iZS5hcy5zcGVjaWZpYy5hcy5wb3NzaWJsZS5pbi5yZWdhcmRzLnRvLnlvdXIuZ29hbC4ubW90aXZhdGlvbi4ud2hhdC5pbnNwaXJlZC55b3UudG8uc3RhcnQuZXRjLi4sXG4gICAgICAgICBTUkZhY3RvcnMgPSBJbi5hZGRpdGlvbi50by55b3VyLnJlc3BvbnNlLi53aGF0LmZhY3RvcnMubWF5LmhhdmUubW90aXZhdGVkLnlvdS50by5oYXZlLnRoaXMucmVzb2x1dGlvbi4uUGxlYXNlLnNlbGVjdC5hbGwudGhhdC5hcHBseS4sXG4gICAgICAgICBQbGFucyA9IEFyZS50aGVyZS5hbnkuc3BlY2lmaWMucGxhbnMueW91LmhhdmUuaW4ucGxhY2UudG8ubWVldC55b3VyLnJlc29sdXRpb24uLi5FLmcuLndvcmtpbmcub3V0LjN4LmEud2Vlay4ud2FraW5nLnVwLmF0LjYuYW0uZXZlcnkuZGF5Li5JZi5zby4ucGxlYXNlLmV4cGxhaW4ueW91ci5wbGFuLi4sXG4gICAgICAgICBIb3VycyA9IElkZWFsbHkuLmFib3V0Lmhvdy5tYW55LmhvdXJzLmEud2Vlay5kby55b3Uud2FudC50by5kZWRpY2F0ZS50by5hY2hpZXZpbmcueW91ci5yZXNvbHV0aW9uLixcbiAgICAgICAgIEV4Y2l0ZW1lbnQgPSBBdC50aGlzLm1vbWVudC4uaG93LmV4Y2l0ZWQuYXJlLnlvdS5pbi5yZWdhcmRzLnRvLnRha2luZy5zdGVwcy50by5hY2hpZXZlLnlvdXIubmV3LnllYXJzLnJlc29sdXRpb24uLFxuICAgICAgICAgRGVkaWNhdGlvbiA9IEF0LnRoaXMudGltZS4uaG93LmRlZGljYXRlZC5hcmUueW91LnRvd2FyZHMuY29udGludWluZy50by5hY2hpZXZlLnlvdXIubmV3LnllYXJzLnJlc29sdXRpb24uLCBcbiAgICAgICAgIEdyYWRlID0gV2hhdC55ZWFyLmFyZS55b3UuYXQuVUNTRC4sXG4gICAgICAgICBSZWxpZ2lvbiA9IFJlbGlnaW91cy5BZmZpbGlhdGlvbixcbiAgICAgICAgIFJlbGF0aW9uc2hpcCA9IFJlbGF0aW9uc2hpcC5TdGF0dXMpICU+JVxuICBzZWxlY3QoLW9uZV9vZihUaW1lc3RhbXApKVxuXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3VwZGF0aW5nIGNvbHVtbiBuYW1lcyBcbkJhc2VsaW5lID0gQmFzZWxpbmUgJT4lXG4gIHJlbmFtZShcImVtYWlsXCIgPSBFbWFpbC5BZGRyZXNzLFxuICAgICAgICAgY29uc2VudCA9IERvLnlvdS5jb25zZW50LnRvLmFuc3dlcmluZy5xdWVzdGlvbnMuaG9uZXN0bHkuLmNvbnNpc3RlbnRseS4uYW5kLmNvbXBsZXRpbmcuc3VydmV5cy5pbi5hLnRpbWVseS5tYW5uZXIuYXMudGhleS5hcmUuc2VudC5vdXQudG8ueW91Li5BZGRpdGlvbmFsbHkuLmRvLnlvdS5jb25zZW50LnRvLmJlaW5nLmNvbnRhY3RlZC5mb3IuZm9sbG93LnVwcy5pZi55b3Uuc3RvcC5yZXNwb25kaW5nLi4sXG4gICAgICAgICBGaXJzdFJlc29sdXRpb24gPSBXaGF0LmlzLnlvdXIubW9zdC5pbXBvcnRhbnQuTmV3LlllYXJzLlJlc29sdXRpb24uZm9yLjIwMjUuLklmLnlvdS5kby5ub3QuaGF2ZS5vbmUuLndoYXQuaXMueW91ci5yZXNvbHV0aW9uLmZvci50aGUuV2ludGVyLlF1YXJ0ZXIuLCBcbiAgICAgICAgIFByaW9yRXhwZXJpZW5jZSA9IEhhdmUueW91LmV2ZXIuYXR0ZW1wdGVkLnRoaXMucmVzb2x1dGlvbi5iZWZvcmUuLFxuICAgICAgICAgT3RoZXJSZXNvbHV0aW9ucyA9IElmLnlvdS5oYXZlLm11bHRpcGxlLk5ldy5ZZWFycy4uV2ludGVyLlF1YXJ0ZXIuUmVzb2x1dGlvbnMuLnBsZWFzZS5saXN0LnRoZW0ub3V0LmJlbG93Li5Eby5ub3QuaW5jbHVkZS50aGUucmVzb2x1dGlvbi5kaXNjdXNzZWQuaW4udGhlLnByZXZpb3VzLnF1ZXN0aW9ucy4uLFxuICAgICAgICAgUmVzb2x1dGlvbkNhdGVnb3J5ID0gV2hpY2guY2F0ZWdvcnkuYmVzdC5yZWZsZWN0cy55b3VyLm1vc3QuaW1wb3J0YW50Lk5ldy5ZZWFycy5SZXNvbHV0aW9uLi5TZWxlY3QuLk90aGVyLi5pZi5ub25lLmFwcGx5LixcbiAgICAgICAgIFRpbWVTcGVudCA9IFNpbmNlLnRoZS5zdGFydC5vZi4yMDI1Li5ob3cubG9uZy5oYXZlLnlvdS5rZXB0LnVwLndpdGgudGhpcy5yZXNvbHV0aW9uLixcbiAgICAgICAgIEluaXRpYWxNb3RpdmF0aW9uID0gV2hhdC5tb3RpdmF0ZWQueW91LnRvLmFkb3B0LnRoaXMuTmV3LlllYXJzLnJlc29sdXRpb24uLlBsZWFzZS5iZS5hcy5zcGVjaWZpYy5hcy5wb3NzaWJsZS5pbi5yZWdhcmRzLnRvLnlvdXIuZ29hbC4ubW90aXZhdGlvbi4ud2hhdC5pbnNwaXJlZC55b3UudG8uc3RhcnQuZXRjLi4sXG4gICAgICAgICBTUkZhY3RvcnMgPSBJbi5hZGRpdGlvbi50by55b3VyLnJlc3BvbnNlLi53aGF0LmZhY3RvcnMubWF5LmhhdmUubW90aXZhdGVkLnlvdS50by5oYXZlLnRoaXMucmVzb2x1dGlvbi4uUGxlYXNlLnNlbGVjdC5hbGwudGhhdC5hcHBseS4sXG4gICAgICAgICBQbGFucyA9IEFyZS50aGVyZS5hbnkuc3BlY2lmaWMucGxhbnMueW91LmhhdmUuaW4ucGxhY2UudG8ubWVldC55b3VyLnJlc29sdXRpb24uLi5FLmcuLndvcmtpbmcub3V0LjN4LmEud2Vlay4ud2FraW5nLnVwLmF0LjYuYW0uZXZlcnkuZGF5Li5JZi5zby4ucGxlYXNlLmV4cGxhaW4ueW91ci5wbGFuLi4sXG4gICAgICAgICBIb3VycyA9IElkZWFsbHkuLmFib3V0Lmhvdy5tYW55LmhvdXJzLmEud2Vlay5kby55b3Uud2FudC50by5kZWRpY2F0ZS50by5hY2hpZXZpbmcueW91ci5yZXNvbHV0aW9uLixcbiAgICAgICAgIEV4Y2l0ZW1lbnQgPSBBdC50aGlzLm1vbWVudC4uaG93LmV4Y2l0ZWQuYXJlLnlvdS5pbi5yZWdhcmRzLnRvLnRha2luZy5zdGVwcy50by5hY2hpZXZlLnlvdXIubmV3LnllYXJzLnJlc29sdXRpb24uLFxuICAgICAgICAgRGVkaWNhdGlvbiA9IEF0LnRoaXMudGltZS4uaG93LmRlZGljYXRlZC5hcmUueW91LnRvd2FyZHMuY29udGludWluZy50by5hY2hpZXZlLnlvdXIubmV3LnllYXJzLnJlc29sdXRpb24uLCBcbiAgICAgICAgIEdyYWRlID0gV2hhdC55ZWFyLmFyZS55b3UuYXQuVUNTRC4sXG4gICAgICAgICBSZWxpZ2lvbiA9IFJlbGlnaW91cy5BZmZpbGlhdGlvbixcbiAgICAgICAgIFJlbGF0aW9uc2hpcCA9IFJlbGF0aW9uc2hpcC5TdGF0dXMpICU+JVxuICBzZWxlY3QoLW9uZV9vZihUaW1lc3RhbXApKVxuXG5gYGAifQ== -->
+<pre class="r"><code>#updating column names 
+Baseline = Baseline %&gt;%
+  rename(&quot;email&quot; = Email.Address,
+         consent = Do.you.consent.to.answering.questions.honestly..consistently..and.completing.surveys.in.a.timely.manner.as.they.are.sent.out.to.you..Additionally..do.you.consent.to.being.contacted.for.follow.ups.if.you.stop.responding..,
+         FirstResolution = What.is.your.most.important.New.Years.Resolution.for.2025..If.you.do.not.have.one..what.is.your.resolution.for.the.Winter.Quarter., 
+         PriorExperience = Have.you.ever.attempted.this.resolution.before.,
+         OtherResolutions = If.you.have.multiple.New.Years..Winter.Quarter.Resolutions..please.list.them.out.below..Do.not.include.the.resolution.discussed.in.the.previous.questions..,
+         ResolutionCategory = Which.category.best.reflects.your.most.important.New.Years.Resolution..Select..Other..if.none.apply.,
+         TimeSpent = Since.the.start.of.2025..how.long.have.you.kept.up.with.this.resolution.,
+         InitialMotivation = What.motivated.you.to.adopt.this.New.Years.resolution..Please.be.as.specific.as.possible.in.regards.to.your.goal..motivation..what.inspired.you.to.start.etc..,
+         SRFactors = In.addition.to.your.response..what.factors.may.have.motivated.you.to.have.this.resolution..Please.select.all.that.apply.,
+         Plans = Are.there.any.specific.plans.you.have.in.place.to.meet.your.resolution...E.g..working.out.3x.a.week..waking.up.at.6.am.every.day..If.so..please.explain.your.plan..,
+         Hours = Ideally..about.how.many.hours.a.week.do.you.want.to.dedicate.to.achieving.your.resolution.,
+         Excitement = At.this.moment..how.excited.are.you.in.regards.to.taking.steps.to.achieve.your.new.years.resolution.,
+         Dedication = At.this.time..how.dedicated.are.you.towards.continuing.to.achieve.your.new.years.resolution., 
+         Grade = What.year.are.you.at.UCSD.,
+         Religion = Religious.Affiliation,
+         Relationship = Relationship.Status) %&gt;%
+  select(-one_of(Timestamp))
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gYHNlbGVjdCgpYDpcbuKEuSBJbiBhcmd1bWVudDogYG9uZV9vZihUaW1lc3RhbXApYC5cbkNhdXNlZCBieSBlcnJvcjpcbiEgb2JqZWN0ICdUaW1lc3RhbXAnIG5vdCBmb3VuZFxuUnVuIGBcdTAwMWJdODs7eC1yLXJ1bjpybGFuZzo6bGFzdF90cmFjZSgpXHUwMDA3cmxhbmc6Omxhc3RfdHJhY2UoKVx1MDAxYl04OztcdTAwMDdgIHRvIHNlZSB3aGVyZSB0aGUgZXJyb3Igb2NjdXJyZWQuXG4ifQ== -->
+<pre><code>Error in `select()`:
+ℹ In argument: `one_of(Timestamp)`.
+Caused by error:
+! object &#39;Timestamp&#39; not found
+Run `]8;;x-r-run:rlang::last_trace()rlang::last_trace()]8;;` to see where the error occurred.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KYGBge3IsIGxpYnJhcmllc30NCiNsb2FkIGluIGxpYnJhcmllcyANCmluc3RhbGwucGFja2FnZXMoInRpZHl2ZXJzZSIpDQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoaGF2ZW4pDQpsaWJyYXJ5KHJlYWRyKQ0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkod3JpdGV4bCkNCmxpYnJhcnkoaGVyZSkNCg0KYGBgDQoNCg0KDQpgYGB7cn0NCg0KQmFzZWxpbmUgPSByZWFkLmNzdigifi9HaXRIdWIvQ09HUzE2NF9OWV9SZXNvbHV0aW9uL0NPR1MgMTY0IEluaXRpYWwgU3VydmV5IChSZXNwb25zZXMpIC0gRm9ybSBSZXNwb25zZXMgMS5jc3YiKQ0KYGBgDQoNCkFkZCBhIG5ldyBjaHVuayBieSBjbGlja2luZyB0aGUgKkluc2VydCBDaHVuayogYnV0dG9uIG9uIHRoZSB0b29sYmFyIG9yIGJ5IHByZXNzaW5nICpDdHJsK0FsdCtJKi4NCg0KV2hlbiB5b3Ugc2F2ZSB0aGUgbm90ZWJvb2ssIGFuIEhUTUwgZmlsZSBjb250YWluaW5nIHRoZSBjb2RlIGFuZCBvdXRwdXQgd2lsbCBiZSBzYXZlZCBhbG9uZ3NpZGUgaXQgKGNsaWNrIHRoZSAqUHJldmlldyogYnV0dG9uIG9yIHByZXNzICpDdHJsK1NoaWZ0K0sqIHRvIHByZXZpZXcgdGhlIEhUTUwgZmlsZSkuDQoNClRoZSBwcmV2aWV3IHNob3dzIHlvdSBhIHJlbmRlcmVkIEhUTUwgY29weSBvZiB0aGUgY29udGVudHMgb2YgdGhlIGVkaXRvci4gQ29uc2VxdWVudGx5LCB1bmxpa2UgKktuaXQqLCAqUHJldmlldyogZG9lcyBub3QgcnVuIGFueSBSIGNvZGUgY2h1bmtzLiBJbnN0ZWFkLCB0aGUgb3V0cHV0IG9mIHRoZSBjaHVuayB3aGVuIGl0IHdhcyBsYXN0IHJ1biBpbiB0aGUgZWRpdG9yIGlzIGRpc3BsYXllZC4NCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KYGBge3IsIGxpYnJhcmllc30NCiNsb2FkIGluIGxpYnJhcmllcyANCmluc3RhbGwucGFja2FnZXMoInRpZHl2ZXJzZSIpDQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoaGF2ZW4pDQpsaWJyYXJ5KHJlYWRyKQ0KbGlicmFyeShkcGx5cikNCmluc3RhbGwucGFja2FnZXMoIndyaXRleGwiKQ0KbGlicmFyeSh3cml0ZXhsKQ0KaW5zdGFsbC5wYWNrYWdlcygiaGVyZSIpDQpsaWJyYXJ5KGhlcmUpDQoNCmBgYA0KDQoNCg0KYGBge3J9DQoNCiNyZWFkaW5nIGluIENTVg0KQmFzZWxpbmUgPSByZWFkLmNzdigifi9HaXRIdWIvQ09HUzE2NF9OWV9SZXNvbHV0aW9uL0NPR1MgMTY0IEluaXRpYWwgU3VydmV5IChSZXNwb25zZXMpIC0gRm9ybSBSZXNwb25zZXMgMS5jc3YiKQ0KDQojdXBkYXRpbmcgY29sdW1uIG5hbWVzIA0KQmFzZWxpbmUgPSBCYXNlbGluZSAlPiUNCiAgcmVuYW1lKCJlbWFpbCIgPSBFbWFpbC5BZGRyZXNzLA0KICAgICAgICAgY29uc2VudCA9IERvLnlvdS5jb25zZW50LnRvLmFuc3dlcmluZy5xdWVzdGlvbnMuaG9uZXN0bHkuLmNvbnNpc3RlbnRseS4uYW5kLmNvbXBsZXRpbmcuc3VydmV5cy5pbi5hLnRpbWVseS5tYW5uZXIuYXMudGhleS5hcmUuc2VudC5vdXQudG8ueW91Li5BZGRpdGlvbmFsbHkuLmRvLnlvdS5jb25zZW50LnRvLmJlaW5nLmNvbnRhY3RlZC5mb3IuZm9sbG93LnVwcy5pZi55b3Uuc3RvcC5yZXNwb25kaW5nLi4sDQogICAgICAgICBGaXJzdFJlc29sdXRpb24gPSBXaGF0LmlzLnlvdXIubW9zdC5pbXBvcnRhbnQuTmV3LlllYXJzLlJlc29sdXRpb24uZm9yLjIwMjUuLklmLnlvdS5kby5ub3QuaGF2ZS5vbmUuLndoYXQuaXMueW91ci5yZXNvbHV0aW9uLmZvci50aGUuV2ludGVyLlF1YXJ0ZXIuLCANCiAgICAgICAgIFByaW9yRXhwZXJpZW5jZSA9IEhhdmUueW91LmV2ZXIuYXR0ZW1wdGVkLnRoaXMucmVzb2x1dGlvbi5iZWZvcmUuLA0KICAgICAgICAgT3RoZXJSZXNvbHV0aW9ucyA9IElmLnlvdS5oYXZlLm11bHRpcGxlLk5ldy5ZZWFycy4uV2ludGVyLlF1YXJ0ZXIuUmVzb2x1dGlvbnMuLnBsZWFzZS5saXN0LnRoZW0ub3V0LmJlbG93Li5Eby5ub3QuaW5jbHVkZS50aGUucmVzb2x1dGlvbi5kaXNjdXNzZWQuaW4udGhlLnByZXZpb3VzLnF1ZXN0aW9ucy4uLA0KICAgICAgICAgUmVzb2x1dGlvbkNhdGVnb3J5ID0gV2hpY2guY2F0ZWdvcnkuYmVzdC5yZWZsZWN0cy55b3VyLm1vc3QuaW1wb3J0YW50Lk5ldy5ZZWFycy5SZXNvbHV0aW9uLi5TZWxlY3QuLk90aGVyLi5pZi5ub25lLmFwcGx5LiwNCiAgICAgICAgIFRpbWVTcGVudCA9IFNpbmNlLnRoZS5zdGFydC5vZi4yMDI1Li5ob3cubG9uZy5oYXZlLnlvdS5rZXB0LnVwLndpdGgudGhpcy5yZXNvbHV0aW9uLiwNCiAgICAgICAgIEluaXRpYWxNb3RpdmF0aW9uID0gV2hhdC5tb3RpdmF0ZWQueW91LnRvLmFkb3B0LnRoaXMuTmV3LlllYXJzLnJlc29sdXRpb24uLlBsZWFzZS5iZS5hcy5zcGVjaWZpYy5hcy5wb3NzaWJsZS5pbi5yZWdhcmRzLnRvLnlvdXIuZ29hbC4ubW90aXZhdGlvbi4ud2hhdC5pbnNwaXJlZC55b3UudG8uc3RhcnQuZXRjLi4sDQogICAgICAgICBTUkZhY3RvcnMgPSBJbi5hZGRpdGlvbi50by55b3VyLnJlc3BvbnNlLi53aGF0LmZhY3RvcnMubWF5LmhhdmUubW90aXZhdGVkLnlvdS50by5oYXZlLnRoaXMucmVzb2x1dGlvbi4uUGxlYXNlLnNlbGVjdC5hbGwudGhhdC5hcHBseS4sDQogICAgICAgICBQbGFucyA9IEFyZS50aGVyZS5hbnkuc3BlY2lmaWMucGxhbnMueW91LmhhdmUuaW4ucGxhY2UudG8ubWVldC55b3VyLnJlc29sdXRpb24uLi5FLmcuLndvcmtpbmcub3V0LjN4LmEud2Vlay4ud2FraW5nLnVwLmF0LjYuYW0uZXZlcnkuZGF5Li5JZi5zby4ucGxlYXNlLmV4cGxhaW4ueW91ci5wbGFuLi4sDQogICAgICAgICBIb3VycyA9IElkZWFsbHkuLmFib3V0Lmhvdy5tYW55LmhvdXJzLmEud2Vlay5kby55b3Uud2FudC50by5kZWRpY2F0ZS50by5hY2hpZXZpbmcueW91ci5yZXNvbHV0aW9uLiwNCiAgICAgICAgIEV4Y2l0ZW1lbnQgPSBBdC50aGlzLm1vbWVudC4uaG93LmV4Y2l0ZWQuYXJlLnlvdS5pbi5yZWdhcmRzLnRvLnRha2luZy5zdGVwcy50by5hY2hpZXZlLnlvdXIubmV3LnllYXJzLnJlc29sdXRpb24uLA0KICAgICAgICAgRGVkaWNhdGlvbiA9IEF0LnRoaXMudGltZS4uaG93LmRlZGljYXRlZC5hcmUueW91LnRvd2FyZHMuY29udGludWluZy50by5hY2hpZXZlLnlvdXIubmV3LnllYXJzLnJlc29sdXRpb24uLCANCiAgICAgICAgIEdyYWRlID0gV2hhdC55ZWFyLmFyZS55b3UuYXQuVUNTRC4sDQogICAgICAgICBSZWxpZ2lvbiA9IFJlbGlnaW91cy5BZmZpbGlhdGlvbiwNCiAgICAgICAgIFJlbGF0aW9uc2hpcCA9IFJlbGF0aW9uc2hpcC5TdGF0dXMpICU+JQ0KICBzZWxlY3QoLWMoVGltZXN0YW1wKSkNCmBgYA0KDQpgYGB7cn0NCkJhc2VsaW5lICU+JQ0KICBnZ3Bsb3QoYWVzKHggPSBUaW1lU3BlbnQpKSArIA0KICBnZW9tX2JhcigpDQoNCg0KQmFzZWxpbmUgJT4lDQogIGdncGxvdChhZXMoeCA9IFJlc29sdXRpb25DYXRlZ29yeSkpICsgDQogIGdlb21fYmFyKCkNCmBgYA0KDQo=</div>
 
 
 
