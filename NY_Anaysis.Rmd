@@ -4,14 +4,14 @@ output: html_notebook
 ---
 ```{r, libraries}
 #load in libraries 
-install.packages("tidyverse")
+#install.packages("tidyverse")
 library(tidyverse)
 library(haven)
 library(readr)
 library(dplyr)
-install.packages("writexl")
+#install.packages("writexl")
 library(writexl)
-install.packages("here")
+#install.packages("here")
 library(here)
 
 ```
@@ -20,7 +20,7 @@ library(here)
 
 ```{r}
 
-#reading in CSV
+#reading in baseline CSV
 Baseline = read.csv("~/GitHub/COGS164_NY_Resolution/COGS 164 Initial Survey (Responses) - Form Responses 1.csv")
 
 #updating column names 
@@ -45,13 +45,36 @@ Baseline = Baseline %>%
 ```
 
 ```{r}
-Baseline %>%
-  ggplot(aes(x = TimeSpent)) + 
-  geom_bar()
+#reading in Follow-up CSVs
+Followups = read.csv("~/GitHub/COGS164_NY_Resolution/COGS 164 Follow Up (Responses) - Form Responses 1.csv")
 
-
-Baseline %>%
-  ggplot(aes(x = ResolutionCategory)) + 
-  geom_bar()
+#updating dataset
+Followups = Followups %>%
+  mutate(Timestamp = case_when(
+    grepl("2/16/2025", Timestamp) ~ "Week 1",
+    grepl("2/17/2025", Timestamp) ~ "Week 1",
+    grepl("2/18/2025", Timestamp) ~ "Week 1",
+    grepl("2/19/2025", Timestamp) ~ "Week 1",
+    grepl("2/20/2025", Timestamp) ~ "Week 1",
+    grepl("2/22/2025", Timestamp) ~ "Week 1",
+    grepl("2/24/2025", Timestamp) ~ "Week 2",
+    grepl("2/25/2025", Timestamp) ~ "Week 2",
+    grepl("2/16/2025", Timestamp) ~ "Week 2",
+    TRUE ~ Timestamp)) %>%
+  rename(email = Email.Address,
+         Consistency = Since.the.last.survey.you.filled.out..how.consistent.would.you.say.you.have.been.with.working.towards.achieving.your.new.years.resolution.., 
+         Motivated = Since.the.last.survey.you.filled.out..how.motivated.would.you.say.you.have.been.towards.achieving.your.new.years.resolution..,
+         Excited = How.excited.have.you.been.feeling..in.regards.to.taking.steps.to.achieve.your.new.years.resolution..since.you.last.took.one.of.our.surveys., 
+         Effort = How.much.effort.did.you.put.into.achieving.this.resolution.since.you.last.took.one.of.our.surveys.,
+         Satisfaction = How.satisfied.are.you.with.the.effort.you.put.into.achieving.your.resolution.since.you.last.filled.out.this.survey.,
+         Dedicated = At.this.time..how.dedicated.are.you.towards.continuing.to.achieve.your.new.years.resolution.,
+         Hours = How.many.hours.have.you.committed.to.your.resolution.this.week.,
+         ResolutionStatus = Thinking.about.your.New.Year.s.resolutions..so.far.have.you, 
+         MotivationFactors = Since.you.last.filled.out.this.survey..what.factors.have.been.motivating.you.to.stay.consistent.with.your.new.years.resolution...Check.all.that.apply.,
+         ObstacleFactors = Since.you.last.filled.out.this.survey..what.factors.have.acted.as.obstacles..preventing.you.from.staying.consistent.with.your.new.years.resolution...Check.all.that.apply.,
+         ResolutionLapses = How.many.times.have.you.not.made.progress.towards.your.resolution.since.you.last.filled.out.this.survey...Quantify.it.the.best.you.can..ex..missed.a.gym.session.twice..went.on.social.media.7.times..etc..,
+         InconsistentEmotions = If.you.have.been.inconsistent.with.your.New.Years.resolution..how.did.you.feel.during.those.periods.of.inconsistency....Check.all.that.apply.,
+         ConsistentEmotions = If.you.have.been.consistent.with.your.New.Years.resolution..how.did.you.feel.during.periods.of.consistency...Check.all.that.apply.
+         )
 ```
 
