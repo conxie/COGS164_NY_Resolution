@@ -59,7 +59,10 @@ Followups = Followups %>%
     grepl("2/22/2025", Timestamp) ~ "Week 1",
     grepl("2/24/2025", Timestamp) ~ "Week 2",
     grepl("2/25/2025", Timestamp) ~ "Week 2",
-    grepl("2/16/2025", Timestamp) ~ "Week 2",
+    grepl("2/26/2025", Timestamp) ~ "Week 2",
+    grepl("2/27/2025", Timestamp) ~ "Week 2",
+    grepl("2/28/2025", Timestamp) ~ "Week 2",
+    grepl("3/1/2025", Timestamp) ~ "Week 2",
     TRUE ~ Timestamp)) %>%
   rename(email = Email.Address,
          Consistency = Since.the.last.survey.you.filled.out..how.consistent.would.you.say.you.have.been.with.working.towards.achieving.your.new.years.resolution.., 
@@ -77,4 +80,49 @@ Followups = Followups %>%
          ConsistentEmotions = If.you.have.been.consistent.with.your.New.Years.resolution..how.did.you.feel.during.periods.of.consistency...Check.all.that.apply.
          )
 ```
+
+## Fun analyses 
+
+```{r}
+
+# Create line graph
+ggplot(Followups, aes(x = Timestamp, y = Motivated, group = email, color = email,
+                      alpha = 0.2)) +
+  geom_line(size = 1) +          # Connect participants across weeks
+  geom_point(size = 3) +         # Represent each participant as a dot
+  geom_jitter(width = 0.2) + 
+  labs(title = "Participant Consistency Over Time", x = "Week", y = "Participant") +
+  theme_minimal()
+```
+
+```{r}
+Followups %>%
+  separate_rows(InconsistentEmotions, sep = ", ") %>%  # Split into separate rows
+  group_by(InconsistentEmotions) %>%
+  summarise(Emotion_Count = n()) %>%
+  ggplot(aes(x = InconsistentEmotions, y = Emotion_Count, fill = InconsistentEmotions)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Emotional Reactions to Skipping vs. Consistency") + 
+  facet_grid(cols = vars(IntrinsicExtrinsic))
+
+Followups %>%
+  separate_rows(InconsistentEmotions, sep = ", ") %>%  # Split into separate rows
+  group_by(IntrinsicExtrinsic, InconsistentEmotions) %>%  # Keep IntrinsicExtrinsic in the grouping
+  summarise(Emotion_Count = n(), .groups = "drop") %>%  # Avoids warnings
+  ggplot(aes(x = InconsistentEmotions, y = Emotion_Count, fill = InconsistentEmotions)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Emotional Reactions to Skipping vs. Consistency") +
+  facet_grid(rows = vars(IntrinsicExtrinsic)) +  # Now it will work!
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate labels for readability
+
+
+Followups = Followups %>%
+  mutate(IntrinsicExtrinsic = case_when(
+    email %in% c("slourduraj@ucsd.edu", "myam@ucsd.edu", "thshi@ucsd.edu", "skaluarachchi@ucsd.edu", "dhilansunandabong@gmail.com", "mmcclellan@ucsd.edu", "jcurry@ucsd.edu", "yhung@ucsd.edu", "shuaiqizhao6516@gmail.com", "mmitsunaga@ucsd.edu", "juw062@ucsd.edu", "kyanagi@ucsd.edu", "kejamison@ucsd.edu", "sathvik.kas@gmail.com", "jrg005@ucsd.edu", "obandopadhyay@ucsd.edu", "akankshak@utexas.edu", "ak20050411@gmail.com") ~ "Intrinsic",
+    email %in% c("nmatusiak@ucsd.edu", "gabi.butters@gmail.com", "acmeyer@ucsd.edu", "dwu15234@gmail.com", "svyasabattu@ucsd.edu", "mdn010@ucsd.edu", "jackziemienski2021@gmail.com", "mbgutierrez@ucsd.edu", "atse@ucsd.edu", "trevor.hijar@gmail.com", "gdolan@ucsd.edu", "aebautista@ucsd.edu", "defriday@ucsd.edu", "cghattassmith@gmail.com", "gbutters@ucsd.edu") ~ "Extrinsic",
+    email %in% c("l9chang@ucsd.edu", "seji@ucsd.edu", "sydneynichol.2@gmail.com", "lissondg@gmail.com") ~ "Both",
+    TRUE ~ email
+)) 
+```
+
 
