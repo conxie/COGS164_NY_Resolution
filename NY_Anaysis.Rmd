@@ -79,41 +79,6 @@ Followups = Followups %>%
          InconsistentEmotions = If.you.have.been.inconsistent.with.your.New.Years.resolution..how.did.you.feel.during.those.periods.of.inconsistency....Check.all.that.apply.,
          ConsistentEmotions = If.you.have.been.consistent.with.your.New.Years.resolution..how.did.you.feel.during.periods.of.consistency...Check.all.that.apply.
          )
-```
-
-## Fun analyses 
-
-```{r}
-
-# Create line graph
-ggplot(Followups, aes(x = Timestamp, y = Motivated, group = email, color = email,
-                      alpha = 0.2)) +
-  geom_line(size = 1) +          # Connect participants across weeks
-  geom_point(size = 3) +         # Represent each participant as a dot
-  geom_jitter(width = 0.2) + 
-  labs(title = "Participant Consistency Over Time", x = "Week", y = "Participant") +
-  theme_minimal()
-```
-
-```{r}
-Followups %>%
-  separate_rows(InconsistentEmotions, sep = ", ") %>%  # Split into separate rows
-  group_by(InconsistentEmotions) %>%
-  summarise(Emotion_Count = n()) %>%
-  ggplot(aes(x = InconsistentEmotions, y = Emotion_Count, fill = InconsistentEmotions)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Emotional Reactions to Skipping vs. Consistency") + 
-  facet_grid(cols = vars(IntrinsicExtrinsic))
-
-Followups %>%
-  separate_rows(InconsistentEmotions, sep = ", ") %>%  # Split into separate rows
-  group_by(IntrinsicExtrinsic, InconsistentEmotions) %>%  # Keep IntrinsicExtrinsic in the grouping
-  summarise(Emotion_Count = n(), .groups = "drop") %>%  # Avoids warnings
-  ggplot(aes(x = InconsistentEmotions, y = Emotion_Count, fill = InconsistentEmotions)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Emotional Reactions to Skipping vs. Consistency") +
-  facet_grid(rows = vars(IntrinsicExtrinsic)) +  # Now it will work!
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate labels for readability
 
 
 Followups = Followups %>%
@@ -125,4 +90,85 @@ Followups = Followups %>%
 )) 
 ```
 
+## Fun analyses 
+
+```{r}
+
+# Create line graph
+Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  group_by(Timestamp, IntrinsicExtrinsic) %>%
+  summarise(Mean_Motivated = mean(Motivated, na.rm = TRUE), .groups = "drop") %>%
+  ggplot(aes(x = Timestamp, y = Mean_Motivated, group = IntrinsicExtrinsic, color = IntrinsicExtrinsic)) +
+  geom_line(size = 1) +       # Connect mean values across weeks
+  geom_point(size = 3) +      # Represent mean values as dots
+  labs(title = "Consistency Over Time", x = "Week", y = "Mean Consistency") + 
+  theme_bw()
+
+
+
+
+Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  ggplot(aes(x = Timestamp, y = Motivated, group = IntrinsicExtrinsic, color = IntrinsicExtrinsic)) +
+  geom_line(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+              summarise(Mean_Motivated = mean(Motivated, na.rm = TRUE), .groups = "drop"), 
+            aes(x = Timestamp, y = Mean_Motivated), size = 1) +   # Plot the means
+  geom_point(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+               summarise(Mean_Motivated = mean(Motivated, na.rm = TRUE), .groups = "drop"), 
+             aes(x = Timestamp, y = Mean_Motivated), size = 3) +  # Points for means
+  geom_jitter(width = 0.2, height = 0, aes(color = IntrinsicExtrinsic)) +  # Jitter for raw data
+  labs(title = "Consistency Over Time", x = "Week", y = "Consistency") +
+  theme_bw()
+
+# ANALYSES
+# Filter data and ensure correct format
+df_anova <- Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  select(email, Timestamp, IntrinsicExtrinsic, Motivated)  # Ensure ParticipantID is present
+
+# Convert to factors
+df_anova$Timestamp <- as.factor(df_anova$Timestamp)
+df_anova$IntrinsicExtrinsic <- as.factor(df_anova$IntrinsicExtrinsic)
+
+# Run repeated measures ANOVA
+summary(aov(Motivated ~ IntrinsicExtrinsic * Timestamp + Error(email / Timestamp), data = df_anova))
+
+```
+
+```{r}
+
+
+Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  separate_rows(InconsistentEmotions, sep = ", ") %>%  # Split into separate rows
+  group_by(IntrinsicExtrinsic, InconsistentEmotions) %>%  # Keep IntrinsicExtrinsic in the grouping
+  summarise(Emotion_Count = n(), .groups = "drop") %>%  # Avoids warnings
+  ggplot(aes(x = InconsistentEmotions, y = Emotion_Count, fill = InconsistentEmotions)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Emotional Reactions to Skipping vs. Consistency") +
+  facet_grid(rows = vars(IntrinsicExtrinsic)) +  # Now it will work!
+  theme_bw() + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) # Rotate labels for readability
+
+
+df_anova <- Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  separate_rows(InconsistentEmotions, sep = ", ") %>%  # Split emotions into rows
+  group_by(email, IntrinsicExtrinsic, InconsistentEmotions) %>%  
+  summarise(Emotion_Count = n(), .groups = "drop") %>%  
+  pivot_wider(names_from = InconsistentEmotions, values_from = Emotion_Count, values_fill = list(Emotion_Count = 0))  # Convert emotions into wide format
+
+# Convert categorical variables to factors
+df_anova$IntrinsicExtrinsic <- as.factor(df_anova$IntrinsicExtrinsic)
+
+# Run repeated measures ANOVA
+anova_results <- aov_car(cbind(!!!syms(names(df_anova)[-c(1,2)])) ~ IntrinsicExtrinsic + Error(email / InconsistentEmotions), data = df_anova)
+summary(anova_results)
+
+```
+
+```{r}
+
+```
 
