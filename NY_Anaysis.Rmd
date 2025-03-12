@@ -1,6 +1,8 @@
 ---
 title: "R Notebook"
 output: html_notebook
+editor_options:
+    chunk_output_type: console
 ---
 ```{r, libraries}
 #load in libraries 
@@ -63,6 +65,16 @@ Followups = Followups %>%
     grepl("2/27/2025", Timestamp) ~ "Week 2",
     grepl("2/28/2025", Timestamp) ~ "Week 2",
     grepl("3/1/2025", Timestamp) ~ "Week 2",
+    grepl("3/2/2025", Timestamp) ~ "Week 2",
+    grepl("3/3/2025", Timestamp) ~ "Week 3",
+    grepl("3/4/2025", Timestamp) ~ "Week 3",
+    grepl("3/5/2025", Timestamp) ~ "Week 3",
+    grepl("3/6/2025", Timestamp) ~ "Week 3",
+    grepl("3/7/2025", Timestamp) ~ "Week 3",
+    grepl("3/8/2025", Timestamp) ~ "Week 3",
+    grepl("3/9/2025", Timestamp) ~ "Week 3",
+    grepl("3/10/2025", Timestamp) ~ "Week 3",
+    grepl("3/11/2025", Timestamp) ~ "Week 4",
     TRUE ~ Timestamp)) %>%
   rename(email = Email.Address,
          Consistency = Since.the.last.survey.you.filled.out..how.consistent.would.you.say.you.have.been.with.working.towards.achieving.your.new.years.resolution.., 
@@ -83,7 +95,7 @@ Followups = Followups %>%
 
 Followups = Followups %>%
   mutate(IntrinsicExtrinsic = case_when(
-    email %in% c("slourduraj@ucsd.edu", "myam@ucsd.edu", "thshi@ucsd.edu", "skaluarachchi@ucsd.edu", "dhilansunandabong@gmail.com", "mmcclellan@ucsd.edu", "jcurry@ucsd.edu", "yhung@ucsd.edu", "shuaiqizhao6516@gmail.com", "mmitsunaga@ucsd.edu", "juw062@ucsd.edu", "kyanagi@ucsd.edu", "kejamison@ucsd.edu", "sathvik.kas@gmail.com", "jrg005@ucsd.edu", "obandopadhyay@ucsd.edu", "akankshak@utexas.edu", "ak20050411@gmail.com") ~ "Intrinsic",
+    email %in% c("slourduraj@ucsd.edu", "myam@ucsd.edu", "thshi@ucsd.edu", "skaluarachchi@ucsd.edu", "dhilansunandabong@gmail.com", "dbong@ucsd.edu", "mmcclellan@ucsd.edu", "jcurry@ucsd.edu", "yhung@ucsd.edu", "shuaiqizhao6516@gmail.com", "mmitsunaga@ucsd.edu", "juw062@ucsd.edu", "kyanagi@ucsd.edu", "kejamison@ucsd.edu", "sathvik.kas@gmail.com", "jrg005@ucsd.edu", "obandopadhyay@ucsd.edu", "akankshak@utexas.edu", "ak20050411@gmail.com") ~ "Intrinsic",
     email %in% c("nmatusiak@ucsd.edu", "gabi.butters@gmail.com", "acmeyer@ucsd.edu", "dwu15234@gmail.com", "svyasabattu@ucsd.edu", "mdn010@ucsd.edu", "jackziemienski2021@gmail.com", "mbgutierrez@ucsd.edu", "atse@ucsd.edu", "trevor.hijar@gmail.com", "gdolan@ucsd.edu", "aebautista@ucsd.edu", "defriday@ucsd.edu", "cghattassmith@gmail.com", "gbutters@ucsd.edu") ~ "Extrinsic",
     email %in% c("l9chang@ucsd.edu", "seji@ucsd.edu", "sydneynichol.2@gmail.com", "lissondg@gmail.com") ~ "Both",
     TRUE ~ email
@@ -102,7 +114,7 @@ Followups %>%
   ggplot(aes(x = Timestamp, y = Mean_Motivated, group = IntrinsicExtrinsic, color = IntrinsicExtrinsic)) +
   geom_line(size = 1) +       # Connect mean values across weeks
   geom_point(size = 3) +      # Represent mean values as dots
-  labs(title = "Consistency Over Time", x = "Week", y = "Mean Consistency") + 
+  labs(title = "Motivation Over Time", x = "Week", y = "Mean Motivation") + 
   theme_bw()
 
 
@@ -118,7 +130,7 @@ Followups %>%
                summarise(Mean_Motivated = mean(Motivated, na.rm = TRUE), .groups = "drop"), 
              aes(x = Timestamp, y = Mean_Motivated), size = 3) +  # Points for means
   geom_jitter(width = 0.2, height = 0, aes(color = IntrinsicExtrinsic)) +  # Jitter for raw data
-  labs(title = "Consistency Over Time", x = "Week", y = "Consistency") +
+  labs(title = "Motivation Over Time", x = "Week", y = "Motivation") +
   theme_bw()
 
 # ANALYSES
@@ -146,10 +158,10 @@ Followups %>%
   summarise(Emotion_Count = n(), .groups = "drop") %>%  # Avoids warnings
   ggplot(aes(x = InconsistentEmotions, y = Emotion_Count, fill = InconsistentEmotions)) +
   geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Emotional Reactions to Skipping vs. Consistency") +
+  labs(title = "Emotional Reactions to Skipping by Motivation") +
   facet_grid(rows = vars(IntrinsicExtrinsic)) +  # Now it will work!
   theme_bw() + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) # Rotate labels for readability
+  theme(axis.text.x = element_text(angle = 20, hjust = 1)) # Rotate labels for readability
 
 
 df_anova <- Followups %>%
@@ -170,5 +182,168 @@ summary(anova_results)
 
 ```{r}
 
+Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  separate_rows(ConsistentEmotions, sep = ", ") %>%  # Split into separate rows
+  group_by(IntrinsicExtrinsic, ConsistentEmotions) %>%  # Keep IntrinsicExtrinsic in the grouping
+  summarise(Emotion_Count = n(), .groups = "drop") %>%  # Avoids warnings
+  ggplot(aes(x = ConsistentEmotions, y = Emotion_Count, fill = ConsistentEmotions)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Emotional Reactions to Consistency by Intrinsic vs Extrinsic") +
+  facet_grid(rows = vars(IntrinsicExtrinsic)) +  # Now it will work!
+  theme_bw() + 
+  theme(axis.text.x = element_text(angle = 20, hjust = 1)) # Rotate labels for readability
+```
+
+
+```{r}
+Followups %>%
+ filter(email != "kal086@ucsd.edu") %>%
+  ggplot(aes(x = Timestamp, y = Consistency, group = IntrinsicExtrinsic, color = IntrinsicExtrinsic)) +
+  geom_line(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+              summarise(Mean_Consistency = mean(Consistency, na.rm = TRUE), .groups = "drop"), 
+            aes(x = Timestamp, y = Mean_Consistency), size = 1) +   # Plot the means
+  geom_point(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+               summarise(Mean_Consistency = mean(Consistency, na.rm = TRUE), .groups = "drop"), 
+             aes(x = Timestamp, y = Mean_Consistency), size = 3) +  # Points for means
+  labs(title = "Consistency Over Time", x = "Week", y = "Consistency") +
+ coord_cartesian(ylim = c(1,5)) + 
+      scale_y_continuous(breaks = seq(from = 0, to = 5, by = 1),
+                     labels = seq(from = 0, to = 5, by = 1)) + 
+  theme_bw()
+  
+
+```
+
+```{r}
+Followups %>%
+ filter(email != "kal086@ucsd.edu") %>%
+  ggplot(aes(x = Timestamp, y = Consistency, group = IntrinsicExtrinsic, color = IntrinsicExtrinsic)) +
+  geom_line(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+              summarise(Mean_Consistency = mean(Consistency, na.rm = TRUE), .groups = "drop"), 
+            aes(x = Timestamp, y = Mean_Consistency), size = 1) +   # Plot the means
+  geom_point(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+               summarise(Mean_Consistency = mean(Consistency, na.rm = TRUE), .groups = "drop"), 
+             aes(x = Timestamp, y = Mean_Consistency), size = 3) +  # Points for means
+  labs(title = "Consistency Over Time", x = "Week", y = "Consistency") +
+ coord_cartesian(ylim = c(1,5)) + 
+      scale_y_continuous(breaks = seq(from = 0, to = 5, by = 1),
+                     labels = seq(from = 0, to = 5, by = 1)) + 
+  theme_bw()
+  
+```
+
+```{r}
+Followups %>%
+ filter(email != "kal086@ucsd.edu") %>%
+  ggplot(aes(x = Timestamp, y = Excited, group = IntrinsicExtrinsic, color = IntrinsicExtrinsic)) +
+  geom_line(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+              summarise(Mean_Excited = mean(Excited, na.rm = TRUE), .groups = "drop"), 
+            aes(x = Timestamp, y = Mean_Excited), size = 1) +   # Plot the means
+  geom_point(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+               summarise(Mean_Excited = mean(Excited, na.rm = TRUE), .groups = "drop"), 
+             aes(x = Timestamp, y = Mean_Excited), size = 3) +  # Points for means
+  labs(title = "Excited Over Time", x = "Week", y = "Excited") +
+ coord_cartesian(ylim = c(1,5)) + 
+      scale_y_continuous(breaks = seq(from = 0, to = 5, by = 1),
+                     labels = seq(from = 0, to = 5, by = 1)) + 
+  theme_bw()
+  
+```
+
+
+```{r}
+Followups %>%
+ filter(email != "kal086@ucsd.edu") %>%
+  ggplot(aes(x = Timestamp, y = Effort, group = IntrinsicExtrinsic, color = IntrinsicExtrinsic)) +
+  geom_line(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+              summarise(Mean_Effort = mean(Effort, na.rm = TRUE), .groups = "drop"), 
+            aes(x = Timestamp, y = Mean_Effort), size = 1) +   # Plot the means
+  geom_point(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+               summarise(Mean_Effort = mean(Effort, na.rm = TRUE), .groups = "drop"), 
+             aes(x = Timestamp, y = Mean_Effort), size = 3) +  # Points for means
+  labs(title = "Effort Over Time", x = "Week", y = "Effort") +
+ coord_cartesian(ylim = c(1,5)) + 
+      scale_y_continuous(breaks = seq(from = 0, to = 5, by = 1),
+                     labels = seq(from = 0, to = 5, by = 1)) + 
+  theme_bw()
+```
+
+```{r}
+Followups %>%
+ filter(email != "kal086@ucsd.edu") %>%
+  ggplot(aes(x = Timestamp, y = Satisfaction, group = IntrinsicExtrinsic, color = IntrinsicExtrinsic)) +
+  geom_line(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+              summarise(Mean_Satisfaction = mean(Satisfaction, na.rm = TRUE), .groups = "drop"), 
+            aes(x = Timestamp, y = Mean_Satisfaction), size = 1) +   # Plot the means
+  geom_point(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+               summarise(Mean_Satisfaction = mean(Satisfaction, na.rm = TRUE), .groups = "drop"), 
+             aes(x = Timestamp, y = Mean_Satisfaction), size = 3) +  # Points for means
+  labs(title = "Satisfaction Over Time", x = "Week", y = "Satisfaction") +
+ coord_cartesian(ylim = c(1,5)) + 
+      scale_y_continuous(breaks = seq(from = 0, to = 5, by = 1),
+                     labels = seq(from = 0, to = 5, by = 1)) + 
+  theme_bw()
+```
+
+```{r}
+Followups %>%
+ filter(email != "kal086@ucsd.edu") %>%
+  ggplot(aes(x = Timestamp, y = Dedicated, group = IntrinsicExtrinsic, color = IntrinsicExtrinsic)) +
+  geom_line(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+              summarise(Mean_Dedicated = mean(Dedicated, na.rm = TRUE), .groups = "drop"), 
+            aes(x = Timestamp, y = Mean_Dedicated), size = 1) +   # Plot the means
+  geom_point(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+               summarise(Mean_Dedicated = mean(Dedicated, na.rm = TRUE), .groups = "drop"), 
+             aes(x = Timestamp, y = Mean_Dedicated), size = 3) +  # Points for means
+  labs(title = "Dedicated Over Time", x = "Week", y = "Dedicated") +
+ coord_cartesian(ylim = c(1,5)) + 
+      scale_y_continuous(breaks = seq(from = 0, to = 5, by = 1),
+                     labels = seq(from = 0, to = 5, by = 1)) + 
+  theme_bw()
+```
+
+```{r}
+Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  group_by(IntrinsicExtrinsic, ResolutionStatus) %>%  
+  summarise(Count = n(), .groups = "drop") %>%  # Avoids warnings
+  ggplot(aes(x = ResolutionStatus, y = Count, fill = ResolutionStatus)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Resolution Status by Motivation") +
+  facet_grid(rows = vars(IntrinsicExtrinsic)) +
+  theme_bw() + 
+  theme(axis.text.x = element_text(angle = 20, hjust = 1)) # Rotate labels for readability
+```
+
+```{r}
+Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  separate_rows(ObstacleFactors, sep = ", ") %>%  # Split into separate rows
+  group_by(IntrinsicExtrinsic, ObstacleFactors) %>%  # Keep IntrinsicExtrinsic in the grouping
+  summarise(Obstacle_Count = n(), .groups = "drop") %>%  # Avoids warnings
+  ggplot(aes(y = ObstacleFactors, x = Obstacle_Count, fill = ObstacleFactors)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Count of Obstacle Factors by Motivation") +
+  facet_grid(rows = vars(IntrinsicExtrinsic)) +  # Now it will work!
+  theme_bw() + 
+  theme(axis.text.x = element_text(angle = 20, hjust = 1)) # Rotate labels for readability
+```
+
+```{r}
+Followups %>%
+ filter(email != "kal086@ucsd.edu") %>%
+  ggplot(aes(x = Timestamp, y = ResolutionLapses, group = IntrinsicExtrinsic, color = IntrinsicExtrinsic)) +
+  geom_line(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+              summarise(Mean_ResolutionLapses = mean(ResolutionLapses, na.rm = TRUE), .groups = "drop"), 
+            aes(x = Timestamp, y = Mean_ResolutionLapses), size = 1) +   # Plot the means
+  geom_point(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
+               summarise(ResolutionLapses = mean(ResolutionLapses, na.rm = TRUE), .groups = "drop"),
+             aes(x = Timestamp, y = ResolutionLapses), size = 3) +  # Points for means
+  labs(title = "ResolutionLapses Over Time", x = "Week", y = "ResolutionLapses") +
+      scale_y_continuous(breaks = seq(from = 0, to = 5, by = 1),
+                     labels = seq(from = 0, to = 5, by = 1)) + 
+  theme_bw()
+  
 ```
 
