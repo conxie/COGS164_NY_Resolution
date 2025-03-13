@@ -338,3 +338,66 @@ ggplot(aes(y = ResolutionCategory, x = Count)) +
 
 ```
 
+
+```{r}
+Followups %>%
+  mutate(email = recode(email, 
+    "gbutters@ucsd.edu" = "gabi.butters@gmail.com", 	
+    "dbong@ucsd.edu" = "dhilansunandabong@gmail.com", 
+    "ak20050411@gmail.com" = "akankshak@utexas.edu" )) %>%
+  left_join(Baseline %>% select(email, ResolutionCategory), by = "email") %>%
+  separate_rows(ResolutionCategory, sep = ", ") %>%  
+  ggplot(aes(x = Timestamp, y = ResolutionLapses, group = ResolutionCategory, color = ResolutionCategory)) +
+  geom_line(data = . %>% group_by(Timestamp, ResolutionCategory) %>% 
+              summarise(Mean_ResolutionLapses = mean(ResolutionLapses, na.rm = TRUE), .groups = "drop"), 
+            aes(x = Timestamp, y = Mean_ResolutionLapses), size = 1, alpha = 0.5) +   # Plot the means
+  geom_point(data = . %>% group_by(Timestamp, ResolutionCategory) %>% 
+               summarise(ResolutionLapses = mean(ResolutionLapses, na.rm = TRUE), .groups = "drop"),
+             aes(x = Timestamp, y = ResolutionLapses), size = 3) +  # Points for means
+  labs(title = "ResolutionLapses Over Time", x = "Week", y = "ResolutionLapses") +
+      scale_y_continuous(breaks = seq(from = 0, to = 10, by = 1),
+                     labels = seq(from = 0, to = 10, by = 1)) + 
+  theme_bw()
+```
+
+```{r}
+Followups %>%
+  mutate(email = recode(email, 
+    "gbutters@ucsd.edu" = "gabi.butters@gmail.com", 	
+    "dbong@ucsd.edu" = "dhilansunandabong@gmail.com", 
+    "ak20050411@gmail.com" = "akankshak@utexas.edu" )) %>%
+  left_join(Baseline %>% select(email, PriorExperience), by = "email") %>%
+  filter(PriorExperience != "i think aiming to get into grad school before 20 is a little crazy so i did think of it but it was too out of reach") %>%
+  ggplot(aes(x = Timestamp, y = ResolutionLapses, group = PriorExperience, color = PriorExperience)) +
+  geom_line(data = . %>% group_by(Timestamp, PriorExperience) %>% 
+              summarise(Mean_ResolutionLapses = mean(ResolutionLapses, na.rm = TRUE), .groups = "drop"), 
+            aes(x = Timestamp, y = Mean_ResolutionLapses), size = 1, alpha = 0.5) +   # Plot the means
+  geom_point(data = . %>% group_by(Timestamp, PriorExperience) %>%
+               summarise(ResolutionLapses = mean(ResolutionLapses, na.rm = TRUE), .groups = "drop"),
+             aes(x = Timestamp, y = ResolutionLapses), size = 3) +  # Points for means
+  labs(title = "ResolutionLapses Over Time", x = "Week", y = "ResolutionLapses") +
+      scale_y_continuous(breaks = seq(from = 0, to = 10, by = 1),
+                     labels = seq(from = 0, to = 10, by = 1)) + 
+  theme_bw()
+```
+
+```{r}
+Followups %>%
+  mutate(email = recode(email, 
+    "gbutters@ucsd.edu" = "gabi.butters@gmail.com", 	
+    "dbong@ucsd.edu" = "dhilansunandabong@gmail.com", 
+    "ak20050411@gmail.com" = "akankshak@utexas.edu" )) %>%
+  left_join(Baseline %>% select(email, PriorExperience), by = "email") %>%
+  filter(PriorExperience != "i think aiming to get into grad school before 20 is a little crazy so i did think of it but it was too out of reach") %>%
+ group_by(PriorExperience, ResolutionStatus, Timestamp) %>%  
+  summarise(Count = n(), .groups = "drop") %>%  # Avoids warnings
+  ggplot(aes(y = PriorExperience, x = Count, fill = ResolutionStatus)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_grid(rows = vars(Timestamp)) +  # Now it will work!
+  labs(title = "Resolution Status by Motivation") +
+  theme_bw() + 
+  theme(axis.text.x = element_text(angle = 20, hjust = 1))
+
+
+```
+
