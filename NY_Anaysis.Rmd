@@ -2,7 +2,7 @@
 title: "R Notebook"
 output: html_notebook
 editor_options:
-    chunk_output_type: console
+    chunk_output_type: inline
 ---
 ```{r, libraries}
 #load in libraries 
@@ -104,6 +104,7 @@ Followups = Followups %>%
 
 ## Fun analyses 
 
+
 ```{r}
 
 # Create line graph
@@ -115,22 +116,6 @@ Followups %>%
   geom_line(size = 1) +       # Connect mean values across weeks
   geom_point(size = 3) +      # Represent mean values as dots
   labs(title = "Motivation Over Time", x = "Week", y = "Mean Motivation") + 
-  theme_bw()
-
-
-
-
-Followups %>%
-  filter(email != "kal086@ucsd.edu") %>%
-  ggplot(aes(x = Timestamp, y = Motivated, group = IntrinsicExtrinsic, color = IntrinsicExtrinsic)) +
-  geom_line(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
-              summarise(Mean_Motivated = mean(Motivated, na.rm = TRUE), .groups = "drop"), 
-            aes(x = Timestamp, y = Mean_Motivated), size = 1) +   # Plot the means
-  geom_point(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
-               summarise(Mean_Motivated = mean(Motivated, na.rm = TRUE), .groups = "drop"), 
-             aes(x = Timestamp, y = Mean_Motivated), size = 3) +  # Points for means
-  geom_jitter(width = 0.2, height = 0, aes(color = IntrinsicExtrinsic)) +  # Jitter for raw data
-  labs(title = "Motivation Over Time", x = "Week", y = "Motivation") +
   theme_bw()
 
 # ANALYSES
@@ -163,20 +148,6 @@ Followups %>%
   theme_bw() + 
   theme(axis.text.x = element_text(angle = 20, hjust = 1)) # Rotate labels for readability
 
-
-df_anova <- Followups %>%
-  filter(email != "kal086@ucsd.edu") %>%
-  separate_rows(InconsistentEmotions, sep = ", ") %>%  # Split emotions into rows
-  group_by(email, IntrinsicExtrinsic, InconsistentEmotions) %>%  
-  summarise(Emotion_Count = n(), .groups = "drop") %>%  
-  pivot_wider(names_from = InconsistentEmotions, values_from = Emotion_Count, values_fill = list(Emotion_Count = 0))  # Convert emotions into wide format
-
-# Convert categorical variables to factors
-df_anova$IntrinsicExtrinsic <- as.factor(df_anova$IntrinsicExtrinsic)
-
-# Run repeated measures ANOVA
-anova_results <- aov_car(cbind(!!!syms(names(df_anova)[-c(1,2)])) ~ IntrinsicExtrinsic + Error(email / InconsistentEmotions), data = df_anova)
-summary(anova_results)
 
 ```
 
@@ -345,5 +316,25 @@ Followups %>%
                      labels = seq(from = 0, to = 5, by = 1)) + 
   theme_bw()
   
+```
+
+```{r}
+Followups %>%
+  mutate(email = recode(email, 
+    "gbutters@ucsd.edu" = "gabi.butters@gmail.com", 	
+    "dbong@ucsd.edu" = "dhilansunandabong@gmail.com", 
+    "ak20050411@gmail.com" = "akankshak@utexas.edu" )) %>%
+  left_join(Baseline %>% select(email, ResolutionCategory), by = "email") %>%
+  separate_rows(ResolutionCategory, sep = ", ") %>%  # Split into separate rows
+  filter(Timestamp == "Week 1") %>%
+  group_by(ResolutionCategory) %>% 
+  summarise(Count = n(), .groups = "drop") %>%
+ggplot(aes(y = ResolutionCategory, x = Count)) +
+  geom_bar(stat = "identity", fill = "steelblue") + 
+  labs(title = "Resolution Category Counts",
+       x = "Resolution Category",
+       y = "Count") +
+  theme_bw()
+
 ```
 
