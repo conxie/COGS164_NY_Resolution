@@ -73,8 +73,13 @@ Followups = Followups %>%
     grepl("3/7/2025", Timestamp) ~ "Week 3",
     grepl("3/8/2025", Timestamp) ~ "Week 3",
     grepl("3/9/2025", Timestamp) ~ "Week 3",
-    grepl("3/10/2025", Timestamp) ~ "Week 3",
+    grepl("3/10/2025", Timestamp) ~ "Week 4",
     grepl("3/11/2025", Timestamp) ~ "Week 4",
+    grepl("3/12/2025", Timestamp) ~ "Week 4",
+    grepl("3/13/2025", Timestamp) ~ "Week 4",
+    grepl("3/14/2025", Timestamp) ~ "Week 4",
+    grepl("3/15/2025", Timestamp) ~ "Week 4",
+    grepl("3/16/2025", Timestamp) ~ "Week 4",
     TRUE ~ Timestamp)) %>%
   rename(email = Email.Address,
          Consistency = Since.the.last.survey.you.filled.out..how.consistent.would.you.say.you.have.been.with.working.towards.achieving.your.new.years.resolution.., 
@@ -148,6 +153,18 @@ Followups %>%
   theme_bw() + 
   theme(axis.text.x = element_text(angle = 20, hjust = 1)) # Rotate labels for readability
 
+# Prepare the data: Create a contingency table
+contingency_table <- Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  separate_rows(InconsistentEmotions, sep = ", ") %>%  # Split into separate rows
+  group_by(IntrinsicExtrinsic, InconsistentEmotions) %>%
+  summarise(Emotion_Count = n(), .groups = "drop") %>%
+  spread(key = InconsistentEmotions, value = Emotion_Count, fill = 0) %>%
+  ungroup()
+
+# Run Chi-Square test
+chi_square_result <- chisq.test(contingency_table[ , -1])  # Exclude the IntrinsicExtrinsic column
+print(chi_square_result)
 
 ```
 
@@ -164,6 +181,21 @@ Followups %>%
   facet_grid(rows = vars(IntrinsicExtrinsic)) +  # Now it will work!
   theme_bw() + 
   theme(axis.text.x = element_text(angle = 20, hjust = 1)) # Rotate labels for readability
+
+
+# Prepare the data: Create a contingency table
+contingency_table <- Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  separate_rows(ConsistentEmotions, sep = ", ") %>%  # Split into separate rows
+  group_by(IntrinsicExtrinsic, ConsistentEmotions) %>%
+  summarise(Emotion_Count = n(), .groups = "drop") %>%
+  spread(key = ConsistentEmotions, value = Emotion_Count, fill = 0) %>%
+  ungroup()
+
+# Run Chi-Square test
+chi_square_result <- chisq.test(contingency_table[ , -1])  # Exclude the IntrinsicExtrinsic column
+print(chi_square_result)
+
 ```
 
 
@@ -184,25 +216,23 @@ Followups %>%
   theme_bw()
   
 
+# Prepare data for repeated-measures ANOVA
+df_anova <- Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  mutate(IntrinsicExtrinsic = as.factor(IntrinsicExtrinsic),
+         Timestamp = as.factor(Timestamp),
+         email = as.factor(email)) %>%
+  select(email, Timestamp, IntrinsicExtrinsic, Consistency)  
+
+# Run repeated-measures ANOVA
+anova_results <- aov(Consistency ~ IntrinsicExtrinsic * Timestamp + Error(email / Timestamp), 
+                     data = df_anova)
+summary(anova_results)
+
+
 ```
 
-```{r}
-Followups %>%
- filter(email != "kal086@ucsd.edu") %>%
-  ggplot(aes(x = Timestamp, y = Consistency, group = IntrinsicExtrinsic, color = IntrinsicExtrinsic)) +
-  geom_line(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
-              summarise(Mean_Consistency = mean(Consistency, na.rm = TRUE), .groups = "drop"), 
-            aes(x = Timestamp, y = Mean_Consistency), size = 1) +   # Plot the means
-  geom_point(data = . %>% group_by(Timestamp, IntrinsicExtrinsic) %>% 
-               summarise(Mean_Consistency = mean(Consistency, na.rm = TRUE), .groups = "drop"), 
-             aes(x = Timestamp, y = Mean_Consistency), size = 3) +  # Points for means
-  labs(title = "Consistency Over Time", x = "Week", y = "Consistency") +
- coord_cartesian(ylim = c(1,5)) + 
-      scale_y_continuous(breaks = seq(from = 0, to = 5, by = 1),
-                     labels = seq(from = 0, to = 5, by = 1)) + 
-  theme_bw()
-  
-```
+
 
 ```{r}
 Followups %>%
@@ -219,6 +249,22 @@ Followups %>%
       scale_y_continuous(breaks = seq(from = 0, to = 5, by = 1),
                      labels = seq(from = 0, to = 5, by = 1)) + 
   theme_bw()
+
+# Prepare data for repeated-measures ANOVA
+df_anova <- Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  mutate(IntrinsicExtrinsic = as.factor(IntrinsicExtrinsic),
+         Timestamp = as.factor(Timestamp),
+         email = as.factor(email)) %>%
+  select(email, Timestamp, IntrinsicExtrinsic, Excited)  
+
+# Run Repeated Measures ANOVA
+anova_results <- aov(Excited ~ IntrinsicExtrinsic * Timestamp + Error(email / Timestamp), 
+                     data = df_anova)
+
+# Display results
+summary(anova_results)
+
   
 ```
 
@@ -238,6 +284,22 @@ Followups %>%
       scale_y_continuous(breaks = seq(from = 0, to = 5, by = 1),
                      labels = seq(from = 0, to = 5, by = 1)) + 
   theme_bw()
+
+# Prepare data for repeated-measures ANOVA
+df_anova <- Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  mutate(IntrinsicExtrinsic = as.factor(IntrinsicExtrinsic),
+         Timestamp = as.factor(Timestamp),
+         email = as.factor(email)) %>%
+  select(email, Timestamp, IntrinsicExtrinsic, Effort)  
+
+# Run Repeated Measures ANOVA
+anova_results <- aov(Effort ~ IntrinsicExtrinsic * Timestamp + Error(email / Timestamp), 
+                     data = df_anova)
+
+# Display results
+summary(anova_results)
+
 ```
 
 ```{r}
@@ -255,6 +317,21 @@ Followups %>%
       scale_y_continuous(breaks = seq(from = 0, to = 5, by = 1),
                      labels = seq(from = 0, to = 5, by = 1)) + 
   theme_bw()
+
+# Prepare data for repeated-measures ANOVA
+df_anova <- Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  mutate(IntrinsicExtrinsic = as.factor(IntrinsicExtrinsic),
+         Timestamp = as.factor(Timestamp),
+         email = as.factor(email)) %>%
+  select(email, Timestamp, IntrinsicExtrinsic, Satisfaction)  
+
+# Run Repeated Measures ANOVA
+anova_results <- aov(Satisfaction ~ IntrinsicExtrinsic * Timestamp + Error(email / Timestamp), 
+                     data = df_anova)
+
+# Display results
+summary(anova_results)
 ```
 
 ```{r}
@@ -272,6 +349,22 @@ Followups %>%
       scale_y_continuous(breaks = seq(from = 0, to = 5, by = 1),
                      labels = seq(from = 0, to = 5, by = 1)) + 
   theme_bw()
+
+
+# Prepare data for repeated-measures ANOVA
+df_anova <- Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  mutate(IntrinsicExtrinsic = as.factor(IntrinsicExtrinsic),
+         Timestamp = as.factor(Timestamp),
+         email = as.factor(email)) %>%
+  select(email, Timestamp, IntrinsicExtrinsic, Dedicated)  
+
+# Run Repeated Measures ANOVA
+anova_results <- aov(Dedicated ~ IntrinsicExtrinsic * Timestamp + Error(email / Timestamp), 
+                     data = df_anova)
+
+# Display results
+summary(anova_results)
 ```
 
 ```{r}
@@ -285,6 +378,27 @@ Followups %>%
   facet_grid(rows = vars(IntrinsicExtrinsic)) +
   theme_bw() + 
   theme(axis.text.x = element_text(angle = 20, hjust = 1)) # Rotate labels for readability
+
+
+# Prepare data for Chi-Square Test
+df_chi <- Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  group_by(IntrinsicExtrinsic, ResolutionStatus) %>%
+  summarise(Count = n(), .groups = "drop") %>%
+  pivot_wider(names_from = ResolutionStatus, values_from = Count, values_fill = 0)
+
+# Convert to matrix for Chi-Square Test
+chi_matrix <- df_chi %>%
+  select(-IntrinsicExtrinsic) %>%
+  as.matrix()
+
+# Perform Chi-Square Test
+chi_results <- chisq.test(chi_matrix)
+
+# Display results
+print(chi_results)
+
+
 ```
 
 ```{r}
@@ -299,6 +413,27 @@ Followups %>%
   facet_grid(rows = vars(IntrinsicExtrinsic)) +  # Now it will work!
   theme_bw() + 
   theme(axis.text.x = element_text(angle = 20, hjust = 1)) # Rotate labels for readability
+
+
+# Prepare data for Chi-Square Test
+df_chi <- Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  separate_rows(ObstacleFactors, sep = ", ") %>%
+  group_by(IntrinsicExtrinsic, ObstacleFactors) %>%
+  summarise(Obstacle_Count = n(), .groups = "drop") %>%
+  pivot_wider(names_from = ObstacleFactors, values_from = Obstacle_Count, values_fill = 0)
+
+# Convert to matrix for Chi-Square Test
+chi_matrix <- df_chi %>%
+  select(-IntrinsicExtrinsic) %>%
+  as.matrix()
+
+# Perform Chi-Square Test
+chi_results <- chisq.test(chi_matrix)
+
+# Display results
+print(chi_results)
+
 ```
 
 ```{r}
@@ -316,27 +451,23 @@ Followups %>%
                      labels = seq(from = 0, to = 5, by = 1)) + 
   theme_bw()
   
+
+# Prepare data for repeated-measures ANOVA
+df_anova <- Followups %>%
+  filter(email != "kal086@ucsd.edu") %>%
+  mutate(IntrinsicExtrinsic = as.factor(IntrinsicExtrinsic),
+         Timestamp = as.factor(Timestamp),
+         email = as.factor(email)) %>%
+  select(email, Timestamp, IntrinsicExtrinsic, ResolutionLapses)  
+
+# Run Repeated Measures ANOVA
+anova_results <- aov(ResolutionLapses ~ IntrinsicExtrinsic * Timestamp + Error(email / Timestamp), 
+                     data = df_anova)
+
+# Display results
+summary(anova_results)
 ```
 
-```{r}
-Followups %>%
-  mutate(email = recode(email, 
-    "gbutters@ucsd.edu" = "gabi.butters@gmail.com", 	
-    "dbong@ucsd.edu" = "dhilansunandabong@gmail.com", 
-    "ak20050411@gmail.com" = "akankshak@utexas.edu" )) %>%
-  left_join(Baseline %>% select(email, ResolutionCategory), by = "email") %>%
-  separate_rows(ResolutionCategory, sep = ", ") %>%  # Split into separate rows
-  filter(Timestamp == "Week 1") %>%
-  group_by(ResolutionCategory) %>% 
-  summarise(Count = n(), .groups = "drop") %>%
-ggplot(aes(y = ResolutionCategory, x = Count)) +
-  geom_bar(stat = "identity", fill = "steelblue") + 
-  labs(title = "Resolution Category Counts",
-       x = "Resolution Category",
-       y = "Count") +
-  theme_bw()
-
-```
 
 
 ```{r}
@@ -358,6 +489,27 @@ Followups %>%
       scale_y_continuous(breaks = seq(from = 0, to = 10, by = 1),
                      labels = seq(from = 0, to = 10, by = 1)) + 
   theme_bw()
+
+# Prepare data for repeated-measures ANOVA
+df_anova <- Followups %>%
+  mutate(email = recode(email, 
+    "gbutters@ucsd.edu" = "gabi.butters@gmail.com", 	
+    "dbong@ucsd.edu" = "dhilansunandabong@gmail.com", 
+    "ak20050411@gmail.com" = "akankshak@utexas.edu" )) %>%
+  left_join(Baseline %>% select(email, ResolutionCategory), by = "email") %>%
+  separate_rows(ResolutionCategory, sep = ", ") %>%
+  mutate(ResolutionCategory = as.factor(ResolutionCategory), 
+         Timestamp = as.factor(Timestamp),
+         email = as.factor(email))
+
+# Run Repeated Measures ANOVA
+anova_results <- aov(ResolutionLapses ~ ResolutionCategory * Timestamp + Error(email / Timestamp), 
+                     data = df_anova)
+
+# Display results
+summary(anova_results)
+
+
 ```
 
 ```{r}
@@ -379,8 +531,30 @@ Followups %>%
       scale_y_continuous(breaks = seq(from = 0, to = 10, by = 1),
                      labels = seq(from = 0, to = 10, by = 1)) + 
   theme_bw()
+
+
+# Prepare data for repeated-measures ANOVA
+df_anova <- Followups %>%
+  mutate(email = recode(email, 
+    "gbutters@ucsd.edu" = "gabi.butters@gmail.com", 	
+    "dbong@ucsd.edu" = "dhilansunandabong@gmail.com", 
+    "ak20050411@gmail.com" = "akankshak@utexas.edu" )) %>%
+  left_join(Baseline %>% select(email, PriorExperience), by = "email") %>%
+  filter(PriorExperience != "i think aiming to get into grad school before 20 is a little crazy so i did think of it but it was too out of reach") %>%
+  mutate(PriorExperience = as.factor(PriorExperience),
+         Timestamp = as.factor(Timestamp),
+         email = as.factor(email))
+
+# Run Repeated Measures ANOVA
+anova_results <- aov(ResolutionLapses ~ PriorExperience * Timestamp + Error(email / Timestamp), 
+                     data = df_anova)
+
+# Display results
+summary(anova_results)
+
 ```
 
+## Not used below 
 ```{r}
 Followups %>%
   mutate(email = recode(email, 
@@ -401,3 +575,22 @@ Followups %>%
 
 ```
 
+```{r}
+Followups %>%
+  mutate(email = recode(email, 
+    "gbutters@ucsd.edu" = "gabi.butters@gmail.com", 	
+    "dbong@ucsd.edu" = "dhilansunandabong@gmail.com", 
+    "ak20050411@gmail.com" = "akankshak@utexas.edu" )) %>%
+  left_join(Baseline %>% select(email, ResolutionCategory), by = "email") %>%
+  separate_rows(ResolutionCategory, sep = ", ") %>%  # Split into separate rows
+  filter(Timestamp == "Week 1") %>%
+  group_by(ResolutionCategory) %>% 
+  summarise(Count = n(), .groups = "drop") %>%
+ggplot(aes(y = ResolutionCategory, x = Count)) +
+  geom_bar(stat = "identity", fill = "steelblue") + 
+  labs(title = "Resolution Category Counts",
+       x = "Resolution Category",
+       y = "Count") +
+  theme_bw()
+
+```
